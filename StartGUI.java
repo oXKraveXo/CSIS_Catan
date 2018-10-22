@@ -8,22 +8,26 @@ public class StartGUI extends JFrame{
 	private static int HEIGHT = 550;
 	
 	// Class variables 
-	int NumPlayers;
-	String [] PlayersNames = new String[4];
-	String [] PlayersColors = new String[4];
-	int [] Order = new int[4];
-	String Chites,LandRandom;
+	private int NumPlayers;
+	private String Condiction;
+	private String [] PlayersNames = new String[4];
+	private String [] PlayersColors = new String[4];
+	private int [] Order = new int[4];
+	private String Chites,LandRandom;
+	
 	
 	// GUI variables
-	JTextField [] Players = new JTextField[4];
-	JTextField [] Colors = new JTextField[4];
-	JLabel [] PlayersLabel= new JLabel[4];
-	JLabel [] ColorLabel= new JLabel[4];
+	private JTextField [] Players = new JTextField[4];
+	private JTextField [] Colors = new JTextField[4];
+	private JLabel [] PlayersLabel= new JLabel[4];
+	private JLabel [] ColorLabel= new JLabel[4];
 	private JTextArea errorArea;
 	private JLabel chitesLabel;
 	private JTextField chitesField;
 	private JLabel landLabel;
 	private JTextField landField;
+	private JLabel condictionLabel;
+	private JTextField condictionField;
 	private JButton build;
 	
 	public StartGUI(){// the constructor for the GUI
@@ -46,6 +50,8 @@ public class StartGUI extends JFrame{
 		chitesField = new JTextField();
 		landLabel = new JLabel("Do you want the land to be randomize");
 		landField = new JTextField();
+		condictionLabel = new JLabel("Win Condiction");
+		condictionField = new JTextField();
 		build = new JButton("Build");
 
 		processButtonHandler processBHandler = new processButtonHandler();
@@ -73,15 +79,19 @@ public class StartGUI extends JFrame{
 		chitesLabel.setSize(200,20);
 		landLabel.setLocation(40,400);
 		landLabel.setSize(200,20);
+		condictionLabel.setLocation(40,420);
+		condictionLabel.setSize(200,20);
 		
 		chitesField.setLocation(300,380);
 		chitesField.setSize(200,20);
 		landField.setLocation(300,400);
 		landField.setSize(200,20);
+		condictionField.setLocation(300,420);
+		condictionField.setSize(200,20);
 		
 		errorArea.setLocation(40,10);
 		errorArea.setSize(470,180);
-		build.setLocation(200,420);
+		build.setLocation(200,440);
 		build.setSize(100,20);
 		
 		
@@ -97,6 +107,8 @@ public class StartGUI extends JFrame{
 		pane.add(chitesField);
 		pane.add(landLabel);
 		pane.add(landField);
+		pane.add(condictionLabel);
+		pane.add(condictionField);
 		pane.add(build);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -109,6 +121,8 @@ public class StartGUI extends JFrame{
 		public void actionPerformed(ActionEvent arg0) {// the method of the button controls
 			Chites = chitesField.getText();
 			LandRandom = landField.getText();
+			Condiction = condictionField.getText();
+			
 			for (int i = 0; i < 4; i++) {
 			PlayersNames [i]= Players[i].getText(); 
 			PlayersColors [i] = Colors[i].getText();
@@ -116,7 +130,7 @@ public class StartGUI extends JFrame{
 			for (int i = 0; i<4; i++) {
 				System.out.println("Test Name " + PlayersNames [i] + " Test Color " + PlayersColors [i] + " Test Order " + i );
 			}
-			System.out.println("Chites " + Chites + " Land " + LandRandom);
+			System.out.println("Chites " + Chites + " Land " + LandRandom + " Condiction " + Condiction);
 				//errorArea.setText("This is the error area \n" +"You have to many mines in your Game \n"+ "Name : "+name + "\nBoxes :" +box + "\nMines :"+mine);
 		}
 		}
