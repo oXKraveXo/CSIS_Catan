@@ -6,6 +6,7 @@ String name;
 //comment to test committing and pushing
 int effect;
 
+//testing testing 123
 //Initialization of object
 public Cards (String name, int effect) {
 	this.name = name;
