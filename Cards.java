@@ -3,6 +3,7 @@ package catan;
 public class Cards {
 String name;
 //image object;
+//comment to test committing and pushing
 int effect;
 
 //Initialization of object
