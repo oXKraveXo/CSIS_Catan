@@ -6,6 +6,8 @@ String name;
 //comment to test committing and pushing
 int effect;
 
+
+// This is shit
 //testing testing 123 123
 //Initialization of object
 public Cards (String name, int effect) {
