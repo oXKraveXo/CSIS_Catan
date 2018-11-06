@@ -7,7 +7,7 @@ String name;
 int effect;
 
 
-// This is shit
+// This is shit bla bla bla
 //testing testing 123 123
 //Initialization of object
 public Cards (String name, int effect) {
