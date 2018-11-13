@@ -1,7 +1,13 @@
 package catan;
-import java.awt.Container;
+import java.awt.*;
+import java.awt.image.*;
+import java.io.*;
 import javax.swing.*;
+import javax.imageio.ImageIO;
+import java.awt.Color;
+import java.awt.Container;
 import java.awt.event.*;
+import java.util.Random;
 
 public class StartGUI extends JFrame{
 	private static int WIDTH = 550;
@@ -18,7 +24,8 @@ public class StartGUI extends JFrame{
 	
 	// GUI variables
 	private JTextField [] Players = new JTextField[4];
-	private JTextField [] Colors = new JTextField[4];
+	private String [] Colors = {"B","O","W","R"};
+	private JComboBox NewColor[] = new JComboBox[4];
 	private JLabel [] PlayersLabel= new JLabel[4];
 	private JLabel [] ColorLabel= new JLabel[4];
 	private JTextArea errorArea;
@@ -42,9 +49,10 @@ public class StartGUI extends JFrame{
 			PlayersLabel [i]= new JLabel("Name of player " +i);
 			Players[i] = new JTextField();
 			ColorLabel[i] = new JLabel("Color of player " +i);
-			Colors[i] = new JTextField();
+			NewColor[i] = new JComboBox <String>(Colors); ;
 		}
-		
+//		private JComboBox<String> Task_1_Box = new JComboBox<String>(Task_1_Choices);
+//		private String [] Task_2A_Choices = {"Player 1","Player 2","Player 3","......"};
 		errorArea = new JTextArea("Message If You Fuck Up"); 
 		chitesLabel = new JLabel("Do you want to randomize the chites");
 		chitesField = new JTextField();
@@ -68,8 +76,8 @@ public class StartGUI extends JFrame{
 			Players [i].setSize(200,20);
 			PlayersLabel [i].setSize(200,20);
 			PlayersLabel [i].setLocation(40,width);
-			Colors [i].setSize(200,20);
-			Colors [i].setLocation(300,80+width);
+			NewColor [i].setSize(200,20);
+			NewColor [i].setLocation(300,80+width);
 			ColorLabel [i].setSize(200,20);
 			ColorLabel [i].setLocation(40,80+width);
 			counter++;
@@ -99,8 +107,8 @@ public class StartGUI extends JFrame{
 		for (int i = 0; i<4; i++) {
 			pane.add(Players[i]);
 			pane.add(PlayersLabel[i]);
-			pane.add(Colors[i]);
 			pane.add(ColorLabel[i]);
+			pane.add(NewColor[i]);
 		}
 		pane.add(errorArea);
 		pane.add(chitesLabel);
@@ -125,7 +133,7 @@ public class StartGUI extends JFrame{
 			
 			for (int i = 0; i < 4; i++) {
 			PlayersNames [i]= Players[i].getText(); 
-			PlayersColors [i] = Colors[i].getText();
+			//PlayersColors [i] = Colors[i].getText();
 			}
 			for (int i = 0; i<4; i++) {
 				System.out.println("Test Name " + PlayersNames [i] + " Test Color " + PlayersColors [i] + " Test Order " + i );
