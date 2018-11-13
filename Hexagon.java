@@ -1,4 +1,4 @@
-package catan;
+package View;
 import java.awt.*;
 
 public class Hexagon extends Polygon {
@@ -10,7 +10,7 @@ public class Hexagon extends Polygon {
     private Point[] points = new Point[SIDES];
     private Point center = new Point(0, 0);
     private int radius;
-    private int rotation = 90;
+    private int rotation = 0;
 
     public Hexagon(Point center, int radius) {
         npoints = SIDES;
@@ -41,7 +41,7 @@ public class Hexagon extends Polygon {
         return rotation;
     }
 
-    public void setRotation(int rotation) {
+    public void setRotation(int rotation) {//rotation orientation?
         this.rotation = rotation;
 
         updatePoints();
