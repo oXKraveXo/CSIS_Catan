@@ -1,8 +1,10 @@
 package catan;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 import java.io.IOException;
 import java.util.Random;
 import java.util.Random;
-import javax.swing.JFrame;
 public class Catan {
 	
 	/*
@@ -60,6 +62,31 @@ public class Catan {
 		//make the controller listen to the view for inputs
 		view.registerListener(controller);
 		
+		/*----------------------------------------
+		JFrame.setDefaultLookAndFeelDecorated(true);
+	    JFrame frame = new JFrame("Get X and Y coordinates");
+	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	 
+	    frame.setLayout(new BorderLayout());
+	    frame.setSize(1200,800);
+	 
+	    final JTextField text = new JTextField();;
+	    frame.add(text,BorderLayout.SOUTH);
+	 
+	    frame.addMouseListener(new MouseListener() {
+	        public void mousePressed(MouseEvent me) { }
+	        public void mouseReleased(MouseEvent me) { }
+	        public void mouseEntered(MouseEvent me) { }
+	        public void mouseExited(MouseEvent me) { }
+	        public void mouseClicked(MouseEvent me) { 
+	          int x = me.getX();
+	          int y = me.getY();
+	          text.setText("X:" + x + " Y:" + y); 
+	        }
+	    });
+	 
+	    frame.setVisible(true);
+		*/
 		
 		/*
 		* the following code loads the gui using the view
@@ -70,8 +97,6 @@ public class Catan {
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         f.pack();
         f.setLocationRelativeTo(null);
-        f.setVisible(true);
-
 	}
 
 }

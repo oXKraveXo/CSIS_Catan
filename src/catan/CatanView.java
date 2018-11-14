@@ -52,6 +52,8 @@ public class CatanView extends JPanel{
 	            }
 	        }
 	    }
+	    
+
 
 	    private void drawHex(Graphics g, int posX, int posY, int x, int y, int r) {
 	        Graphics2D g2d = (Graphics2D) g;
