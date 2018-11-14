@@ -1,9 +1,9 @@
 package catan;
 
 import java.awt.*;
+
 import javax.swing.*;
 
-import Controller.CatanController;
 
 public class CatanView extends JPanel{
 	
