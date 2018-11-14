@@ -1,4 +1,5 @@
 package catan;
+import java.io.IOException;
 import java.util.Random;
 import java.util.Random;
 import javax.swing.JFrame;
@@ -47,7 +48,12 @@ public class Catan {
 		//creating the model, view, and controller components of the system
 		CatanView view = new CatanView();
 		StartGUI view2 = new StartGUI();
-		UserGUI view3 = new UserGUI();
+		try {
+			UserGUI view3 = new UserGUI();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		CatanModel model = new CatanModel();
 		CatanController controller = new CatanController(model, view);
 		

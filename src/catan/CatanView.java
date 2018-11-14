@@ -1,4 +1,4 @@
-package View;
+package catan;
 
 import java.awt.*;
 import javax.swing.*;

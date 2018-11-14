@@ -17,7 +17,7 @@ public class Tiles {
 		}
 		this.chit = chit; //tile production #
 		this.tile = tile; //tile production type
-		this.rober = F; //state of production blocade
+		this.rober = false; //state of production blocade
 	}
 	public int[] getRoadSlots() {
 		return roadSlots; //returns open road slots
@@ -43,7 +43,7 @@ public class Tiles {
 	public void setTile(int tile) {
 		this.tile = tile; //sets tile production type
 	}
-	public void getRober() {
+	public boolean getRober() {
 		return rober; //returns state of production blocade
 	}
 	public void setRober(boolean rober) {
