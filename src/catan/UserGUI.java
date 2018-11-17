@@ -19,7 +19,7 @@ public class UserGUI extends JFrame {
 	
 	// Class variables for use in GUI
 	String name = user.getName();
-	char color = user.getColor();
+	String color = user.getColor();
 	int orderNum = user.getOrderNum();
 	int settlements = user.getSettlements();
 	int cities = user.getCities();
@@ -27,9 +27,11 @@ public class UserGUI extends JFrame {
 	//Cards [] usersCards; 
 	int condiction = user.getCondiction();
 	int [] resorces = user.getResorces(); 
+	
+	// use to test the Cards in Deck 
 	int c = 0;
 	
-	// GUI variables
+	// Left Side GUI Objects
 	private JTextArea errorArea;
 	private JLabel nameLabel;
 	private JLabel colorLabel;
@@ -39,6 +41,8 @@ public class UserGUI extends JFrame {
 	private JLabel roadsLabel;
 	private JLabel condictionLabel;
 	private JLabel resorcesLabel;
+	
+	// Center GUI 
 	private JButton Task_1;
 	private JLabel Task_1_Notes;
 	private JLabel Roll;
@@ -56,8 +60,9 @@ public class UserGUI extends JFrame {
 	private JComboBox<String> Task_2B_Box = new JComboBox<String>(Task_2B_Choices);
 	private String [] Task_2C_Choices = {"Settlement","City","Card","Road"};
 	private JComboBox<String> Task_2C_Box = new JComboBox<String>(Task_2C_Choices);
-	private JButton ChangeCard;
 	
+	// Right Side of the GUI
+	private JButton ChangeCard;
 	private JLabel card_Num;
 	private JLabel knight_Image;
 	private JLabel uw_Image;
@@ -65,13 +70,14 @@ public class UserGUI extends JFrame {
 	
 	Container pane = getContentPane();
 	public UserGUI()  throws IOException{// the constructor for the GUI
+		
+		// Set the Defaults for Container 
 		setTitle("Hello Welcome to User Interface");		
 		setSize(WIDTH, HEIGHT);
-//		
 		pane.setLayout(null); 
 		pane.setBackground(getColor());
-		//Instantiate objects of GUI components
 		
+		//Instantiate objects of GUI components
 		errorArea = new JTextArea("Message If You Fuck Up"); 
 		nameLabel = new JLabel("This is the name "+ name);
 		colorLabel = new JLabel("This is the color "+ color);
@@ -93,6 +99,8 @@ public class UserGUI extends JFrame {
 		Task_3_Notes = new JLabel("<html>When you select on the end phase your points will be celculated<BR> and the next players turn will start.<html>");
 		ChangeCard = new JButton("Deck");
 		card_Num = new JLabel("This is the num of ");
+		
+		//Grouping the buttons together to implement the ActionListenber
 		processButtonHandler processBHandler = new processButtonHandler();
 		Task_1.addActionListener(processBHandler);
 		Task_2A.addActionListener(processBHandler);
@@ -152,7 +160,7 @@ public class UserGUI extends JFrame {
 		card_Num.setLocation(1645,0);
 		card_Num.setSize(110,20);
 		
-		// Adding objects to container
+		// Add Images to the GUI
 		BufferedImage Help_Image = ImageIO.read(new File("C:\\Capture.PNG"));
 		JLabel help_Image = new JLabel(new ImageIcon(Help_Image));
 		BufferedImage UW_Image = ImageIO.read(new File("C:\\UW.PNG"));
@@ -162,23 +170,28 @@ public class UserGUI extends JFrame {
 		BufferedImage Road_Image = ImageIO.read(new File("C:\\RoadBuilding.PNG"));
 		road_Image = new JLabel(new ImageIcon(Road_Image));
 		
+		// Set the Images to not show
 		uw_Image.setVisible(false);
 		knight_Image.setVisible(false);
 		road_Image.setVisible(false);
 		
+		// Set the size and locations for my images
 		help_Image.setLocation(0,0);
 		help_Image.setSize(400,500);
-		
 		knight_Image.setLocation(1500,0);
 		knight_Image.setSize(400,500);
 		uw_Image.setLocation(1500,0);
 		uw_Image.setSize(400,500);
 		road_Image.setLocation(1500,0);
 		road_Image.setSize(400,500);
+		
+		// Add images to my pane 
 		pane.add(help_Image);
 		pane.add(knight_Image);
 		pane.add(uw_Image);
 		pane.add(road_Image);
+		
+		// Add my Java objects to pane my container object
 		pane.add(errorArea);
 		pane.add(nameLabel);
 		pane.add(colorLabel);
@@ -239,8 +252,11 @@ public class UserGUI extends JFrame {
 					System.out.println("Road");
 		    	System.out.println("Build");
 		    }
-		    else if (e.getActionCommand().contains("End Turn")) 
-		    	System.out.println("Ended turn");
+		    else if (e.getActionCommand().contains("End Turn")) {
+		    	dispose();
+		    	//new UserGUI();
+		    	System.out.println("Ended turn");	
+		    }
 		    else if (e.getActionCommand().contains("Deck")) {
 		    	c++;
 		    	if (c ==1) {
@@ -265,7 +281,7 @@ public class UserGUI extends JFrame {
 	}
 	public User getUser() {
 		String name = "TestName";
-		char color = 'B';
+		String color = "B";
 		int orderNum = 1;
 		int settlements = 5;
 		int cities = 4;
@@ -282,13 +298,13 @@ public class UserGUI extends JFrame {
 	}
 	public Color getColor() {
 		Color temp = Color.BLACK;
-		if (user.getColor()=='B')
+		if (user.getColor()=="B")
 			temp = new Color(158,202,225);
-		else if (user.getColor()=='O')
+		else if (user.getColor()=="O")
 			temp =new Color(253,174,107);
-		else if (user.getColor()=='W')
+		else if (user.getColor()=="W")
 			temp =new Color(240,240,240);
-		else if (user.getColor()=='R')
+		else if (user.getColor()=="R")
 			temp =new Color(252,146,114);
 		else
 			temp = Color.GRAY;

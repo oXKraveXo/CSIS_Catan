@@ -1,29 +1,32 @@
 package catan;
 
 public class CatanModel {
-	
-	//create the users profiles
-	Cards player1Cards[] = new Cards[20];
-	int player1Resources[] = new int[100];
-	User user1 = new User("player1",'R',1,0,0,0,player1Cards,0,player1Resources);
-	
-	Cards player2Cards[] = new Cards[20];
-	int player2Resources[] = new int[100];
-	User user2 = new User("player2",'B',2,0,0,0,player2Cards,0,player2Resources);
-	
-	Cards player3Cards[] = new Cards[20];
-	int player3Resources[] = new int[100];
-	User user3 = new User("player3",'W',3,0,0,0,player3Cards,0,player3Resources);
-	
-	Cards player4Cards[] = new Cards[20];
-	int player4Resources[] = new int[100];
-	User user4 = new User("player4",'Y',4,0,0,0,player4Cards,0,player4Resources);
-	
-	public void testing() {
-		System.out.println(user1.toString());
-		System.out.println(user2.toString());
-		System.out.println(user3.toString());
-		System.out.println(user4.toString());
+	// Constructor for this class
+	public CatanModel() {
+		
 	}
+	public CatanModel(int num, String values[]) {
+		
+		// create the users in the program 
+		User [] userModel = new User[num];
+		Cards [] usersCards = new Cards [0];
+		for(int i=0; i<usersCards.length; i++)
+			usersCards[i] = new Cards();
+		int [] resorces = new int [5]; 
+		for (int i=0; i<resorces.length; i++) 
+			resorces[i] = 0;
+		for (int i=0; i<userModel.length; i++) {
+			//public User (String name, String color, int orderNum, int settlements, int cities, int roads, Cards [] usersCards, int condiction, int [] resorces ) {
+			userModel[i] = new User(values [i], values[i+4], i, 5, 4, 15, usersCards, i, resorces );
+		}
+	}
+
+	/**
+	 *  this is the model of the MVC system
+	 * 
+	 *  we  will be storing the data of the game here in variables for the appropiate
+	 *  pieces and also be defining the methods that will be the behavior of the game
+	 * 
+	 */
 
 }

@@ -1,9 +1,7 @@
 package catan;
 
 import java.awt.*;
-
 import javax.swing.*;
-
 
 public class CatanView extends JPanel{
 	
@@ -15,8 +13,9 @@ public class CatanView extends JPanel{
 	    private Font font = new Font("Arial", Font.BOLD, 18);
 	    FontMetrics metrics;
 
-	    public CatanView() {
+	   public CatanView() {
 	        setPreferredSize(new Dimension(WIDTH, HEIGHT));
+	        StartGUI startView = new StartGUI();
 	    }
 
 	    @Override
@@ -28,8 +27,7 @@ public class CatanView extends JPanel{
 	        g2d.setFont(font);
 	        metrics = g.getFontMetrics();
 
-	        drawCircle(g2d, origin, 312, true, true, 0x4488FF, 0);//312
-	        drawBorder(g2d, origin, 270, 30, 0, 0x3EA055, true);//270
+	        drawCircle(g2d, origin, 300, true, true, 0x4488FF, 0);//300
 	        drawHexGridLoop(g2d, origin, 5, 50, 8); //5, 50, 8 for standard board
 	    }
 
@@ -45,15 +43,13 @@ public class CatanView extends JPanel{
 	            for (int col = 0; col < cols; col++) {
 	                int xLbl = row < half ? col - row : col - half;
 	                int yLbl = row - half;
-	                int y = (int) (origin.y + xOff * (col * 2 + 1 - cols));
-	                int x = (int) (origin.x + yOff * (row - half) * 3);
+	                int x = (int) (origin.x + xOff * (col * 2 + 1 - cols));
+	                int y = (int) (origin.y + yOff * (row - half) * 3);
 
 	                drawHex(g, xLbl, yLbl, x, y, radius);
 	            }
 	        }
 	    }
-	    
-
 
 	    private void drawHex(Graphics g, int posX, int posY, int x, int y, int r) {
 	        Graphics2D g2d = (Graphics2D) g;
@@ -96,12 +92,6 @@ public class CatanView extends JPanel{
 	        // Set values to previous when done.
 	        g.setColor(tmpC);
 	        g.setStroke(tmpS);
-	    }
-	    public void drawBorder(Graphics2D g, Point origin, int radius, int rotation, 
-	    		int borderThickness,int colorValue,boolean filled ) {
-	    	Hexagon border = new Hexagon(origin.x, origin.y, radius);//270
-	        border.setRotation(rotation);
-	        border.draw(g, origin.x, origin.y, borderThickness, colorValue, filled);//0x3EA055
 	    }
  //-----------------------------end board creation----------------------------------------
 	

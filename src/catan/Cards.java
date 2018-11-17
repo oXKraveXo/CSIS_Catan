@@ -3,13 +3,12 @@ package catan;
 public class Cards {
 String name;
 //image object;
-//comment to test committing and pushing
 int effect;
 
-
-// This is shit bla bla bla
-//testing testing 123 123
 //Initialization of object
+public Cards () {
+	
+}
 public Cards (String name, int effect) {
 	this.name = name;
 	this.effect = effect;

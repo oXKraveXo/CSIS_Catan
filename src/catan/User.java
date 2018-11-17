@@ -6,7 +6,7 @@ public class User {
 	
 	// Class variables 
 	String name;
-	char color;
+	String color;
 	int orderNum;
 	int settlements;
 	int cities;
@@ -19,7 +19,7 @@ public class User {
 	public User () {
 		
 	}
-	public User (String name, char color, int orderNum, int settlements, int cities, int roads, Cards [] usersCards, int condiction, int [] resorces ) {
+	public User (String name, String color, int orderNum, int settlements, int cities, int roads, Cards [] usersCards, int condiction, int [] resorces ) {
 		this.name = name;
 		this.color = color;
 		this.orderNum = orderNum;
@@ -36,10 +36,10 @@ public class User {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public char getColor() {
+	public String getColor() {
 		return color;
 	}
-	public void setColor(char color) {
+	public void setColor(String color) {
 		this.color = color;
 	}
 	public int getOrderNum() {
