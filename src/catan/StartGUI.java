@@ -23,7 +23,7 @@ public class StartGUI extends JFrame{
 	
 	// GUI variables
 	private JTextField [] Players = new JTextField[4];
-	private String [] Colors = {"B","O","W","R"};
+	private String [] Colors = {"Blue","Orange","White","Red"};
 	private JComboBox NewColor[] = new JComboBox[4];
 	private JLabel [] PlayersLabel= new JLabel[4];
 	private JLabel [] ColorLabel= new JLabel[4];
@@ -144,13 +144,20 @@ public class StartGUI extends JFrame{
 		
 		
 		Players[0].addActionListener(controller);
+		Players[0].setActionCommand("p1name");
+		
 		Players[1].addActionListener(controller);
+		Players[1].setActionCommand("p2name");
+		
 		Players[2].addActionListener(controller);
+		Players[2].setActionCommand("p3name");
+		
 		Players[3].addActionListener(controller);
+		Players[3].setActionCommand("p4name");
 				
 	}
 	
-	//methods to send user info to controlle
+	//methods to send user info to controller
 	public String getColorOne() {
 		return NewColor[0].getSelectedItem().toString();
 	}

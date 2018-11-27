@@ -41,15 +41,19 @@ public class CatanModel {
 	}
 	public void setNameOne(String name) {
 		users[0].setName(name);
+		System.out.println("user 1 renamed to " + name);
 	}
 	public void setNameTwo(String name) {
 		users[0].setName(name);
+		System.out.println("user 2 renamed to " + name);
 	}
 	public void setNameThree(String name) {
 		users[0].setName(name);
+		System.out.println("user 3 renamed to " + name);
 	}
 	public void setNameFour(String name) {
 		users[0].setName(name);
+		System.out.println("user 4 renamed to " + name);
 	}
 
 	/**

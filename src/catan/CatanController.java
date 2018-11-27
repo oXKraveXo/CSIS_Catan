@@ -33,7 +33,7 @@ public class CatanController implements ActionListener{
 
 		if(command.equals("Build")) {
 			//builds the board
-			System.out.println("the controller then tells the board to build itself");
+			System.out.println("building board");
 			CatanView view = new CatanView();
 			view.registerListener(controller);
 			JFrame f = new JFrame();
@@ -45,17 +45,21 @@ public class CatanController implements ActionListener{
 	     
 	        //color selection
 		} else if(command.equals("p1color")) {
-			System.out.println("updating player 1 color to " + view.getColorOne());
 			model.setUserOneColor(view.getColorOne());
 		} else if(command.equals("p2color")) {
-			System.out.println("updating player 2 color to " + view.getColorTwo());
 			model.setUserTwoColor(view.getColorTwo());
 		} else if(command.equals("p3color")) {
-			System.out.println("updating player 3 color to " + view.getColorThree());
 			model.setUserThreeColor(view.getColorThree());
 		} else if(command.equals("p4color")) {
-			System.out.println("updating player 4 color to " + view.getColorFour());
 			model.setUserFourColor(view.getColorFour());
+		} else if(command.equals("p1name")) {
+			model.setNameOne(view.getNameOne());
+		} else if(command.equals("p2name")) {
+			model.setNameTwo(view.getNameTwo());
+		} else if(command.equals("p3name")) {
+			model.setNameThree(view.getNameThree());
+		} else if(command.equals("p4name")) {
+			model.setNameFour(view.getNameFour());
 		}
 		
 			
