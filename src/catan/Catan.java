@@ -46,6 +46,7 @@ public class Catan {
 //		}
 		
 		//creating the model, view, and controller components of the system
+		
 		//CatanView view = new CatanView();
 		StartGUI view2 = new StartGUI();
 		//UserGUI view3 = new UserGUI();

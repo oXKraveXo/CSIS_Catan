@@ -30,10 +30,9 @@ public class CatanController implements ActionListener{
 	
 	public void actionPerformed(ActionEvent e) {
 		String command = e.getActionCommand();
-		
-		System.out.println(command);
-		
+
 		if(command.equals("Build")) {
+			//builds the board
 			System.out.println("the controller then tells the board to build itself");
 			CatanView view = new CatanView();
 			view.registerListener(controller);
@@ -43,16 +42,23 @@ public class CatanController implements ActionListener{
 	        f.pack();
 	        f.setLocationRelativeTo(null);
 	        f.setVisible(true);
-		}else if(command.equals("comboBoxChanged")) {
-			System.out.println("tell the model to update players color");
-		}else {
-			System.out.println("tell the model to update players name");
+	     
+	        //color selection
+		} else if(command.equals("p1color")) {
+			System.out.println("updating player 1 color to " + view.getColorOne());
+			model.setUserOneColor(view.getColorOne());
+		} else if(command.equals("p2color")) {
+			System.out.println("updating player 2 color to " + view.getColorTwo());
+			model.setUserTwoColor(view.getColorTwo());
+		} else if(command.equals("p3color")) {
+			System.out.println("updating player 3 color to " + view.getColorThree());
+			model.setUserThreeColor(view.getColorThree());
+		} else if(command.equals("p4color")) {
+			System.out.println("updating player 4 color to " + view.getColorFour());
+			model.setUserFourColor(view.getColorFour());
 		}
 		
-		
-		
-		
-		
+			
 	}
 
 	

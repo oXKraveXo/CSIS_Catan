@@ -127,16 +127,53 @@ public class StartGUI extends JFrame{
 	
 	//registering the gui components to the controller
 	public void registerListener(CatanController controller) {
+		
 		build.addActionListener(controller);
+		
 		NewColor[0].addActionListener(controller);
+		NewColor[0].setActionCommand("p1color");
+		
 		NewColor[1].addActionListener(controller);
+		NewColor[1].setActionCommand("p2color");
+		
 		NewColor[2].addActionListener(controller);
+		NewColor[2].setActionCommand("p3color");
+		
 		NewColor[3].addActionListener(controller);
+		NewColor[3].setActionCommand("p4color");
+		
+		
 		Players[0].addActionListener(controller);
 		Players[1].addActionListener(controller);
 		Players[2].addActionListener(controller);
 		Players[3].addActionListener(controller);
 				
+	}
+	
+	//methods to send user info to controller
+	public String getColorOne() {
+		return NewColor[0].getSelectedItem().toString();
+	}
+	public String getColorTwo() {
+		return NewColor[1].getSelectedItem().toString();
+	}
+	public String getColorThree() {
+		return NewColor[2].getSelectedItem().toString();
+	}
+	public String getColorFour() {
+		return NewColor[3].getSelectedItem().toString();
+	}
+	public String getNameOne() {
+		return Players[0].getText();
+	}
+	public String getNameTwo() {
+		return Players[1].getText();
+	}
+	public String getNameThree() {
+		return Players[2].getText();
+	}
+	public String getNameFour() {
+		return Players[3].getText();
 	}
 	
 	// Class to handle event listener for testing
