@@ -43,7 +43,7 @@ public class CatanController implements ActionListener{
 	        f.setLocationRelativeTo(null);
 	        f.setVisible(true);
 	     
-	        //color selection sdf
+	        //color selection
 		} else if(command.equals("p1color")) {
 			System.out.println("updating player 1 color to " + view.getColorOne());
 			model.setUserOneColor(view.getColorOne());

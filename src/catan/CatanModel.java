@@ -53,7 +53,7 @@ public class CatanModel {
 	}
 
 	/**
-	 *  this is the model of the MVC system
+	 *  this is the model of the MVC systemm
 	 * 
 	 *  we  will be storing the data of the game here in variables for the appropiate
 	 *  pieces and also be defining the methods that will be the behavior of the game

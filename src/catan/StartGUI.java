@@ -150,7 +150,7 @@ public class StartGUI extends JFrame{
 				
 	}
 	
-	//methods to send user info to controller
+	//methods to send user info to controlle
 	public String getColorOne() {
 		return NewColor[0].getSelectedItem().toString();
 	}
