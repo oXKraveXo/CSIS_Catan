@@ -13,6 +13,7 @@ public class CatanController implements ActionListener{
 	//to connect the M, V, and C together
 	private CatanModel model;
 	private StartGUI view;
+	private UserGUI view2;
 	
 	/**
 	 * This saves the model and and view.
@@ -22,10 +23,11 @@ public class CatanController implements ActionListener{
 	 * 
 	 * view is a View for what should be displayed in the GUI
 	 */
-	public CatanController(CatanModel model, StartGUI view) {
+	public CatanController(CatanModel model, StartGUI view, UserGUI view2) {
 		
 		this.model = model;
 		this.view = view;
+		this.view2 = view2;
 	}
 	
 	public void actionPerformed(ActionEvent e) {
@@ -46,12 +48,16 @@ public class CatanController implements ActionListener{
 	        //color selection
 		} else if(command.equals("p1color")) {
 			model.setUserOneColor(view.getColorOne());
+			System.out.println(view.getNameOne() + "s color is now " + view.getColorOne());
 		} else if(command.equals("p2color")) {
 			model.setUserTwoColor(view.getColorTwo());
+			System.out.println(view.getNameTwo() + "s color is now " + view.getColorTwo());
 		} else if(command.equals("p3color")) {
 			model.setUserThreeColor(view.getColorThree());
+			System.out.println(view.getNameThree() + "s color is now " + view.getColorThree());
 		} else if(command.equals("p4color")) {
 			model.setUserFourColor(view.getColorFour());
+			System.out.println(view.getNameFour() + "s color is now " + view.getColorFour());
 		} else if(command.equals("p1name")) {
 			model.setNameOne(view.getNameOne());
 		} else if(command.equals("p2name")) {
@@ -60,6 +66,8 @@ public class CatanController implements ActionListener{
 			model.setNameThree(view.getNameThree());
 		} else if(command.equals("p4name")) {
 			model.setNameFour(view.getNameFour());
+		} else if(command.equals("rollDice")) {
+			view2.displayRoll(model.rollDice());
 		}
 		
 			

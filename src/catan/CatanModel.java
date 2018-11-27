@@ -1,5 +1,7 @@
 package catan;
 
+import java.util.Random;
+
 public class CatanModel {
 	User [] users = new User[4];
 	Cards [] usersCards = new Cards [0];
@@ -19,25 +21,27 @@ public class CatanModel {
 		}
 	}
 	
+	public int rollDice() {
+		int roll = (int )(Math.random() * 11 + 2);
+		return roll;
+	}
+	
+	
 	public void setUserOneColor(String color) {
 
 		users[0].setColor(color);
-		System.out.println("user 1 color now " + color);
 	}
 	public void setUserTwoColor(String color) {
 
 		users[1].setColor(color);
-		System.out.println("user 2 color now " + color);
 	}
 	public void setUserThreeColor(String color) {
 
 		users[2].setColor(color);
-		System.out.println("user 3 color now " + color);
 	}
 	public void setUserFourColor(String color) {
 
 		users[3].setColor(color);
-		System.out.println("user 4 color now " + color);
 	}
 	public void setNameOne(String name) {
 		users[0].setName(name);

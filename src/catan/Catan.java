@@ -49,13 +49,15 @@ public class Catan {
 		
 		//CatanView view = new CatanView();
 		StartGUI view2 = new StartGUI();
+		UserGUI view3 = new UserGUI();
 		//UserGUI view3 = new UserGUI();
 		CatanModel model = new CatanModel();
-		CatanController controller = new CatanController(model, view2);
+		CatanController controller = new CatanController(model, view2, view3);
 		
 		//make the controller listen to the view for inputs
 		//view.registerListener(controller);
 		view2.registerListener(controller);
+		view3.registerListener(controller);
 		
 		
 		/*

@@ -15,7 +15,8 @@ public class UserGUI extends JFrame {
 	private static int HEIGHT = 550;
 	
 	// Class variables 
-	User user = getUser();
+	
+	User user = new User();
 	
 	// Class variables for use in GUI
 	String name = user.getName();
@@ -75,7 +76,7 @@ public class UserGUI extends JFrame {
 		setTitle("Hello Welcome to User Interface");		
 		setSize(WIDTH, HEIGHT);
 		pane.setLayout(null); 
-		pane.setBackground(getColor());
+		pane.setBackground(getColor("Blue"));
 		
 		//Instantiate objects of GUI components
 		errorArea = new JTextArea("Message If You Fuck Up"); 
@@ -86,7 +87,7 @@ public class UserGUI extends JFrame {
 		citiesLabel = new JLabel("This is the cities "+ cities);
 		roadsLabel = new JLabel("This is the roads "+ roads);
 		condictionLabel = new JLabel ("This is the users condiction poiint "+ condiction);
-		resorcesLabel = new JLabel ("Wheet "+resorces[0]+ " Stone " +resorces[1]+ " Clay " +resorces[2] + " Sheep " + resorces[3] + " Wood " + resorces[4] );
+		//resorcesLabel = new JLabel ("Wheet "+resorces[0]+ " Stone " +resorces[1]+ " Clay " +resorces[2] + " Sheep " + resorces[3] + " Wood " + resorces[4] );
 		Task_1 = new JButton("Roll");
 		Task_1_Notes = new JLabel("<html>You will need to select on the phase one button to start your round <BR> If you Roll a 7 please use the drop down box below to move the Robber<html>");
 		Roll = new JLabel("");
@@ -125,8 +126,8 @@ public class UserGUI extends JFrame {
 		roadsLabel.setSize(200,20);
 		condictionLabel.setLocation(440,320);
 		condictionLabel.setSize(400,20);
-		resorcesLabel.setLocation(440,340);
-		resorcesLabel.setSize(400,20);
+		//resorcesLabel.setLocation(440,340);
+		//resorcesLabel.setSize(400,20);
 		errorArea.setLocation(440,10);
 		errorArea.setSize(470,180);
 		Task_1.setLocation(1000,40);
@@ -161,13 +162,13 @@ public class UserGUI extends JFrame {
 		card_Num.setSize(110,20);
 		
 		// Add Images to the GUI
-		BufferedImage Help_Image = ImageIO.read(new File("C:\\Capture.PNG"));
+		BufferedImage Help_Image = ImageIO.read(new File("Capture.PNG"));
 		JLabel help_Image = new JLabel(new ImageIcon(Help_Image));
-		BufferedImage UW_Image = ImageIO.read(new File("C:\\UW.PNG"));
+		BufferedImage UW_Image = ImageIO.read(new File("UW.PNG"));
 		uw_Image = new JLabel(new ImageIcon(UW_Image));
-		BufferedImage Knight_Image = ImageIO.read(new File("C:\\Knight.PNG"));
+		BufferedImage Knight_Image = ImageIO.read(new File("Knight.PNG"));
 		knight_Image = new JLabel(new ImageIcon(Knight_Image));
-		BufferedImage Road_Image = ImageIO.read(new File("C:\\RoadBuilding.PNG"));
+		BufferedImage Road_Image = ImageIO.read(new File("RoadBuilding.PNG"));
 		road_Image = new JLabel(new ImageIcon(Road_Image));
 		
 		// Set the Images to not show
@@ -200,7 +201,7 @@ public class UserGUI extends JFrame {
 		pane.add(citiesLabel);
 		pane.add(roadsLabel);
 		pane.add(condictionLabel);
-		pane.add(resorcesLabel);
+		//pane.add(resorcesLabel);
 		pane.add(Task_1);
 		pane.add(Task_1_Notes);
 		pane.add(Task_1_Box);
@@ -226,9 +227,7 @@ public class UserGUI extends JFrame {
 	private class processButtonHandler implements ActionListener{//class to handle the Button
 		@Override
 		public void actionPerformed(ActionEvent e) {// the method of the button controls
-			if(e.getActionCommand().contains("Roll")) 
-				Roll.setText(""+ Roll());
-		    else if (e.getActionCommand().contains("Trade")) {
+		    if (e.getActionCommand().contains("Trade")) {
 		    	//"Player 1","Player 2","Player 3","......"
 		    	if (Task_2A_Box.getSelectedItem() == "Player 1")
 					System.out.println("Player 1");
@@ -279,36 +278,32 @@ public class UserGUI extends JFrame {
 			pane.validate();
 	    }
 	}
-	public User getUser() {
-		String name = "TestName";
-		String color = "B";
-		int orderNum = 1;
-		int settlements = 5;
-		int cities = 4;
-		int roads = 15;
-		Cards [] usersCards = new Cards [20];
-		for (int i = 0; i< 10; i++)
-			usersCards[i] = new Cards("temp", 5);
-		int condiction = 10;
-		int [] resorces = new int [5]; 
-		for (int i = 0; i<resorces.length; i++)
-			resorces[i] = i;
-		User object = new User(name, color, orderNum, settlements, cities, roads, usersCards, condiction, resorces);
-		return object;
+	public void updateUser(User object) {
+		//String name, String color, int orderNum, int settlements, int cities, int roads, Cards [] usersCards, int condiction, int [] resorces 
+		user.setName(object.getName());
+		user.setColor(object.getColor());
+		user.setCities(object.getCities());
+		user.setSettlements(object.getSettlements());
+		user.setRoads(object.getRoads());
+		user.setCondiction(object.getCondiction());
+		user.setResorces(object.getResorces());
+		pane.validate();
+		//return object;
 	}
-	public Color getColor() {
-		Color temp = Color.BLACK;
-		if (user.getColor()=="B")
-			temp = new Color(158,202,225);
-		else if (user.getColor()=="O")
-			temp =new Color(253,174,107);
-		else if (user.getColor()=="W")
-			temp =new Color(240,240,240);
-		else if (user.getColor()=="R")
-			temp =new Color(252,146,114);
+	public Color getColor(String temp) {
+		Color color = Color.BLACK;
+		if (temp=="Blue")
+			color = new Color(158,202,225);
+		else if (temp=="Orange")
+			color =new Color(253,174,107);
+		else if (temp=="White")
+			color =new Color(240,240,240);
+		else if (temp=="Red")
+			color =new Color(252,146,114);
 		else
-			temp = Color.GRAY;
-		return temp; 
+			color = Color.GRAY;
+		
+		return color; 
 	}
 	public int Roll() {
 		int redNum;
@@ -321,4 +316,287 @@ public class UserGUI extends JFrame {
 			while (redNum <= 0 || yellowNum <=0);
 		return redNum+yellowNum;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	public void registerListener(CatanController controller) {
+		
+		Task_1.addActionListener(controller);
+		Task_1.setActionCommand("rollDice");
+
+	}
+	
+	
+	
+	public void displayRoll(int num) {
+		Roll.setText("" + num);
+	}
+	
+	public static int getWIDTH() {
+		return WIDTH;
+	}
+	public static void setWIDTH(int wIDTH) {
+		WIDTH = wIDTH;
+	}
+	public static int getHEIGHT() {
+		return HEIGHT;
+	}
+	public static void setHEIGHT(int hEIGHT) {
+		HEIGHT = hEIGHT;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getOrderNum() {
+		return orderNum;
+	}
+	public void setOrderNum(int orderNum) {
+		this.orderNum = orderNum;
+	}
+	public int getSettlements() {
+		return settlements;
+	}
+	public void setSettlements(int settlements) {
+		this.settlements = settlements;
+	}
+	public int getCities() {
+		return cities;
+	}
+	public void setCities(int cities) {
+		this.cities = cities;
+	}
+	public int getRoads() {
+		return roads;
+	}
+	public void setRoads(int roads) {
+		this.roads = roads;
+	}
+	public int getCondiction() {
+		return condiction;
+	}
+	public void setCondiction(int condiction) {
+		this.condiction = condiction;
+	}
+	public int[] getResorces() {
+		return resorces;
+	}
+	public void setResorces(int[] resorces) {
+		this.resorces = resorces;
+	}
+	public int getC() {
+		return c;
+	}
+	public void setC(int c) {
+		this.c = c;
+	}
+	public JTextArea getErrorArea() {
+		return errorArea;
+	}
+	public void setErrorArea(JTextArea errorArea) {
+		this.errorArea = errorArea;
+	}
+	public JLabel getNameLabel() {
+		return nameLabel;
+	}
+	public void setNameLabel(JLabel nameLabel) {
+		this.nameLabel = nameLabel;
+	}
+	public JLabel getColorLabel() {
+		return colorLabel;
+	}
+	public void setColorLabel(JLabel colorLabel) {
+		this.colorLabel = colorLabel;
+	}
+	public JLabel getOrderNumLabel() {
+		return orderNumLabel;
+	}
+	public void setOrderNumLabel(JLabel orderNumLabel) {
+		this.orderNumLabel = orderNumLabel;
+	}
+	public JLabel getSettlementsLabel() {
+		return settlementsLabel;
+	}
+	public void setSettlementsLabel(JLabel settlementsLabel) {
+		this.settlementsLabel = settlementsLabel;
+	}
+	public JLabel getCitiesLabel() {
+		return citiesLabel;
+	}
+	public void setCitiesLabel(JLabel citiesLabel) {
+		this.citiesLabel = citiesLabel;
+	}
+	public JLabel getRoadsLabel() {
+		return roadsLabel;
+	}
+	public void setRoadsLabel(JLabel roadsLabel) {
+		this.roadsLabel = roadsLabel;
+	}
+	public JLabel getCondictionLabel() {
+		return condictionLabel;
+	}
+	public void setCondictionLabel(JLabel condictionLabel) {
+		this.condictionLabel = condictionLabel;
+	}
+	public JLabel getResorcesLabel() {
+		return resorcesLabel;
+	}
+	public void setResorcesLabel(JLabel resorcesLabel) {
+		this.resorcesLabel = resorcesLabel;
+	}
+	public JButton getTask_1() {
+		return Task_1;
+	}
+	public void setTask_1(JButton task_1) {
+		Task_1 = task_1;
+	}
+	public JLabel getTask_1_Notes() {
+		return Task_1_Notes;
+	}
+	public void setTask_1_Notes(JLabel task_1_Notes) {
+		Task_1_Notes = task_1_Notes;
+	}
+	public JLabel getRoll() {
+		return Roll;
+	}
+	public void setRoll(JLabel roll) {
+		Roll = roll;
+	}
+	public JButton getTask_2A() {
+		return Task_2A;
+	}
+	public void setTask_2A(JButton task_2a) {
+		Task_2A = task_2a;
+	}
+	public JButton getTask_2B() {
+		return Task_2B;
+	}
+	public void setTask_2B(JButton task_2b) {
+		Task_2B = task_2b;
+	}
+	public JButton getTask_2C() {
+		return Task_2C;
+	}
+	public void setTask_2C(JButton task_2c) {
+		Task_2C = task_2c;
+	}
+	public JLabel getTask_2_Notes() {
+		return Task_2_Notes;
+	}
+	public void setTask_2_Notes(JLabel task_2_Notes) {
+		Task_2_Notes = task_2_Notes;
+	}
+	public JButton getTask_3() {
+		return Task_3;
+	}
+	public void setTask_3(JButton task_3) {
+		Task_3 = task_3;
+	}
+	public JLabel getTask_3_Notes() {
+		return Task_3_Notes;
+	}
+	public void setTask_3_Notes(JLabel task_3_Notes) {
+		Task_3_Notes = task_3_Notes;
+	}
+	public String[] getTask_1_Choices() {
+		return Task_1_Choices;
+	}
+	public void setTask_1_Choices(String[] task_1_Choices) {
+		Task_1_Choices = task_1_Choices;
+	}
+	public JComboBox<String> getTask_1_Box() {
+		return Task_1_Box;
+	}
+	public void setTask_1_Box(JComboBox<String> task_1_Box) {
+		Task_1_Box = task_1_Box;
+	}
+	public String[] getTask_2A_Choices() {
+		return Task_2A_Choices;
+	}
+	public void setTask_2A_Choices(String[] task_2a_Choices) {
+		Task_2A_Choices = task_2a_Choices;
+	}
+	public JComboBox<String> getTask_2A_Box() {
+		return Task_2A_Box;
+	}
+	public void setTask_2A_Box(JComboBox<String> task_2a_Box) {
+		Task_2A_Box = task_2a_Box;
+	}
+	public String[] getTask_2B_Choices() {
+		return Task_2B_Choices;
+	}
+	public void setTask_2B_Choices(String[] task_2b_Choices) {
+		Task_2B_Choices = task_2b_Choices;
+	}
+	public JComboBox<String> getTask_2B_Box() {
+		return Task_2B_Box;
+	}
+	public void setTask_2B_Box(JComboBox<String> task_2b_Box) {
+		Task_2B_Box = task_2b_Box;
+	}
+	public String[] getTask_2C_Choices() {
+		return Task_2C_Choices;
+	}
+	public void setTask_2C_Choices(String[] task_2c_Choices) {
+		Task_2C_Choices = task_2c_Choices;
+	}
+	public JComboBox<String> getTask_2C_Box() {
+		return Task_2C_Box;
+	}
+	public void setTask_2C_Box(JComboBox<String> task_2c_Box) {
+		Task_2C_Box = task_2c_Box;
+	}
+	public JButton getChangeCard() {
+		return ChangeCard;
+	}
+	public void setChangeCard(JButton changeCard) {
+		ChangeCard = changeCard;
+	}
+	public JLabel getCard_Num() {
+		return card_Num;
+	}
+	public void setCard_Num(JLabel card_Num) {
+		this.card_Num = card_Num;
+	}
+	public JLabel getKnight_Image() {
+		return knight_Image;
+	}
+	public void setKnight_Image(JLabel knight_Image) {
+		this.knight_Image = knight_Image;
+	}
+	public JLabel getUw_Image() {
+		return uw_Image;
+	}
+	public void setUw_Image(JLabel uw_Image) {
+		this.uw_Image = uw_Image;
+	}
+	public JLabel getRoad_Image() {
+		return road_Image;
+	}
+	public void setRoad_Image(JLabel road_Image) {
+		this.road_Image = road_Image;
+	}
+	public Container getPane() {
+		return pane;
+	}
+	public void setPane(Container pane) {
+		this.pane = pane;
+	}
+	public void setColor(String color) {
+		this.color = color;
+	}
+	
 }
