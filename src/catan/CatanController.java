@@ -67,7 +67,12 @@ public class CatanController implements ActionListener{
 		} else if(command.equals("p4name")) {
 			model.setNameFour(view.getNameFour());
 		} else if(command.equals("rollDice")) {
-			view2.displayRoll(model.rollDice());
+			int roll = 6;
+			view2.displayRoll(roll);
+			model.giveResources(roll);
+			
+		} else if(command.equals("build")) {
+			model.build(view2.getBuilding());
 		}
 		
 			

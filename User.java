@@ -13,7 +13,8 @@ public class User {
 	int roads;
 	Cards [] usersCards; 
 	int condiction;
-	int [] resorces; 
+	int [] resorces;
+	int resourceCounter = 0;
 
 	// Initialization of object
 	public User () {
@@ -92,6 +93,10 @@ public class User {
 	}
 	public void setUsersCards(Cards[] usersCards) {
 		this.usersCards = usersCards;
+	}
+	
+	public void addResources(int type) {
+		resorces[resourceCounter] = type;
 	}
 	@Override
 	public String toString() {

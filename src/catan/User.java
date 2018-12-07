@@ -14,6 +14,7 @@ public class User {
 	Cards [] usersCards; 
 	int condiction;
 	int [] resorces; 
+	int resourceCounter = 0;
 
 	// Initialization of object
 	public User () {
@@ -78,6 +79,24 @@ public class User {
 	public void setResorces(int[] resorces) {
 		this.resorces = resorces;
 	}
+	
+	public void addResources(int type) {
+		resorces[resourceCounter] = type;
+		resourceCounter++;
+	}
+	
+	public boolean hasResource(int type) {
+		for(int i = 0; i < resorces.length; i++) {
+			if(resorces[i] == type) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public void removeResources(int type) {
+	}
+	
 	@Override
 	public String toString() {
 		return "User [name=" + name + ", color=" + color + ", orderNum=" + orderNum + ", settlements=" + settlements

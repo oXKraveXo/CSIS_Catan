@@ -61,10 +61,9 @@ public class StartGUI extends JFrame{
 		condictionLabel = new JLabel("Win Condiction");
 		condictionField = new JTextField();
 		build = new JButton("Build");
-		
-		// Implementation action listener 
-		processButtonHandler processBHandler = new processButtonHandler();
-		build.addActionListener(processBHandler);
+		 
+	
+	
 		
 		// Method for location and size of objects
 		int counter = 1;
@@ -184,15 +183,5 @@ public class StartGUI extends JFrame{
 	}
 	
 	// Class to handle event listener for testing
-	private class processButtonHandler implements ActionListener{//class to handle the Button
-		@Override
-		public void actionPerformed(ActionEvent arg0) {// the method of the button controls
-		boolean test = true;
-		// After the catch throw return test 	
-		if (test) {
-			// Code to bring values from the view to model to intiate the users 
-				
-			}		
-		}
-		}
+	
     }

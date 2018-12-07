@@ -305,32 +305,21 @@ public class UserGUI extends JFrame {
 		
 		return color; 
 	}
-	public int Roll() {
-		int redNum;
-		int yellowNum;
-		do {  
-			Random temp = new Random();
-			redNum = temp.nextInt(7);
-			yellowNum = temp.nextInt(7);
-			}	
-			while (redNum <= 0 || yellowNum <=0);
-		return redNum+yellowNum;
-	}
-	
-	
-	
-	
-	
-	
-	
 	
 	public void registerListener(CatanController controller) {
 		
 		Task_1.addActionListener(controller);
 		Task_1.setActionCommand("rollDice");
-
+		Task_2C.addActionListener(controller);
+		Task_2C.setActionCommand("build");
+		
 	}
 	
+	//get what to build from Task_2C_Box
+	public String getBuilding() {
+		String value= Task_2C_Box.getSelectedItem().toString();
+		return value;
+	}
 	
 	
 	public void displayRoll(int num) {
