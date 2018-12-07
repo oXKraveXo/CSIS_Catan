@@ -181,7 +181,6 @@ public class StartGUI extends JFrame{
 	public String getNameFour() {
 		return Players[3].getText();
 	}
-	
-	// Class to handle event listener for testing
-	
-    }
+
+
+}
