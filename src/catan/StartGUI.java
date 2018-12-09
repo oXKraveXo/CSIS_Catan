@@ -153,10 +153,20 @@ public class StartGUI extends JFrame{
 		
 		Players[3].addActionListener(controller);
 		Players[3].setActionCommand("p4name");
+		
+		condictionField.addActionListener(controller);
+		condictionField.setActionCommand("winCondition");
 				
 	}
 	
+	
+	
 	//methods to send user info to controller
+	public int getWinAmount() {
+		int jml = Integer.parseInt(condictionField.getText());
+		return jml;
+	}
+	
 	public String getColorOne() {
 		return NewColor[0].getSelectedItem().toString();
 	}

@@ -97,7 +97,7 @@ public class UserGUI extends JFrame {
 		Task_2C = new JButton("Build");
 		Task_2_Notes = new JLabel("<html>In Phase two you can select three diffrent things you can do. <BR>1.  First you can trade. <BR>2.  Secound you can play a Deployment Card. <BR>3.  Third you can build <html>");
 		Task_3 = new JButton("End Turn");
-		Task_3_Notes = new JLabel("<html>When you select on the end phase your points will be celculated<BR> and the next players turn will start.<html>");
+		Task_3_Notes = new JLabel("<html>When you select on the end phase your points will be calculated<BR> and the next players turn will start.<html>");
 		ChangeCard = new JButton("Deck");
 		card_Num = new JLabel("This is the num of ");
 		
@@ -251,11 +251,6 @@ public class UserGUI extends JFrame {
 					System.out.println("Road");
 		    	System.out.println("Build");
 		    }
-		    else if (e.getActionCommand().contains("End Turn")) {
-		    	dispose();
-		    	//new UserGUI();
-		    	System.out.println("Ended turn");	
-		    }
 		    else if (e.getActionCommand().contains("Deck")) {
 		    	c++;
 		    	if (c ==1) {
@@ -312,6 +307,8 @@ public class UserGUI extends JFrame {
 		Task_1.setActionCommand("rollDice");
 		Task_2C.addActionListener(controller);
 		Task_2C.setActionCommand("build");
+		Task_3.addActionListener(controller);
+		Task_3.setActionCommand("end");
 		
 	}
 	
@@ -321,6 +318,9 @@ public class UserGUI extends JFrame {
 		return value;
 	}
 	
+	public void clearRoll() {
+		Roll.setText("");
+	}
 	
 	public void displayRoll(int num) {
 		Roll.setText("" + num);

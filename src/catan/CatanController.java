@@ -58,6 +58,7 @@ public class CatanController implements ActionListener{
 		} else if(command.equals("p4color")) {
 			model.setUserFourColor(view.getColorFour());
 			System.out.println(view.getNameFour() + "s color is now " + view.getColorFour());
+			//name selection
 		} else if(command.equals("p1name")) {
 			model.setNameOne(view.getNameOne());
 		} else if(command.equals("p2name")) {
@@ -66,13 +67,23 @@ public class CatanController implements ActionListener{
 			model.setNameThree(view.getNameThree());
 		} else if(command.equals("p4name")) {
 			model.setNameFour(view.getNameFour());
+			//rolling dice and recieving resources
 		} else if(command.equals("rollDice")) {
-			int roll = 6;
+			int roll = 8; //model.rollDice();
 			view2.displayRoll(roll);
 			model.giveResources(roll);
-			
+			//building things
 		} else if(command.equals("build")) {
 			model.build(view2.getBuilding());
+			//moving to next turn
+		} else if(command.equals("end")) {
+			model.checkForWin();
+			model.nextTurn();
+			view2.clearRoll();
+			
+		} else if(command.equals("winCondition")) {
+			System.out.println("victory points needed to win: " + view.getWinAmount());
+			model.setWinCon(view.getWinAmount());
 		}
 		
 			

@@ -16,6 +16,11 @@ public Deck () {
 	}
 }
 
+public int drawCard() {
+	int roll = (int )(Math.random() * 24);
+	return roll;
+}
+
 @Override
 public String toString() {
 	String temp = "";

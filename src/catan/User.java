@@ -85,16 +85,25 @@ public class User {
 		resourceCounter++;
 	}
 	
-	public boolean hasResource(int type) {
+	public boolean hasResource(int type, int amount) {
+		int counter = 0;
 		for(int i = 0; i < resorces.length; i++) {
 			if(resorces[i] == type) {
-				return true;
+				counter++;
+				if(counter == amount) {
+					return true;
+				}
 			}
 		}
 		return false;
 	}
 	
-	public void removeResources(int type) {
+	public void addVP(int amount) {
+		condiction+= amount;
+	}
+	
+	public void removeResources(int type, int amount) {
+		
 	}
 	
 	@Override
