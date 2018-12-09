@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.awt.*;
 import javax.swing.*;
 
+import View.Hexagon;
+
 
 public class CatanView extends JPanel{
 	
@@ -37,6 +39,7 @@ public class CatanView extends JPanel{
 	        metrics = g.getFontMetrics();
 
 	        drawCircle(g2d, origin, 300, true, true, 0x4488FF, 0);//300
+	        drawBorder(g2d, origin, 270, 30, 0, 0x3EA055, true);//270
 	        drawHexGridLoop(g2d, origin, 5, 50, 8); //5, 50, 8 for standard board
 	    }
 
@@ -101,6 +104,12 @@ public class CatanView extends JPanel{
 	        // Set values to previous when done.
 	        g.setColor(tmpC);
 	        g.setStroke(tmpS);
+	    }
+	    public void drawBorder(Graphics2D g, Point origin, int radius, int rotation, 
+	    		int borderThickness,int colorValue,boolean filled ) {
+	    	Hexagon border = new Hexagon(origin.x, origin.y, radius);//270
+	        border.setRotation(rotation);
+	        border.draw(g, origin.x, origin.y, borderThickness, colorValue, filled);//0x3EA055
 	    }
  //-----------------------------end board creation----------------------------------------
 	
