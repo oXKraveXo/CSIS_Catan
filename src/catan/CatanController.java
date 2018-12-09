@@ -79,7 +79,9 @@ public class CatanController implements ActionListener{
 		} else if(command.equals("end")) {
 			model.checkForWin();
 			model.nextTurn();
+			int turnNum = model.getWhoseTurn();
 			view2.clearRoll();
+			view2.changeColor(turnNum);
 			
 		} else if(command.equals("winCondition")) {
 			System.out.println("victory points needed to win: " + view.getWinAmount());

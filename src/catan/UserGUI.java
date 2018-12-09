@@ -318,6 +318,18 @@ public class UserGUI extends JFrame {
 		return value;
 	}
 	
+	public void changeColor(int turn) {
+		if(turn == 0) {
+			getContentPane().setBackground(Color.blue);
+		} else if(turn == 1) {
+			getContentPane().setBackground(Color.orange);
+		} else if(turn == 2) {
+			getContentPane().setBackground(Color.white);
+		} else if(turn == 3) {
+			getContentPane().setBackground(Color.red);
+		}
+	}
+	
 	public void clearRoll() {
 		Roll.setText("");
 	}

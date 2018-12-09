@@ -123,14 +123,14 @@ public class CatanModel {
 		
 		whoseTurn++;
 		if(whoseTurn == 1) {
-			System.out.println("It is now " + users[1].getName() + " turn");
+			System.out.println("It is now User 2 turn");
 		} else if(whoseTurn == 2) {
-			System.out.println("It is now " + users[2].getName() + " turn");
+			System.out.println("It is now user 3 turn");
 		} else if(whoseTurn == 3) {
-			System.out.println("It is now " + users[3].getName() + " turn");
+			System.out.println("It is now user 4 turn");
 		} else if(whoseTurn > 3) {
 			whoseTurn = 0;
-			System.out.println("It is now " + users[0].getName() + " turn");
+			System.out.println("It is now user 1 turn");
 		}
 	}
 	
@@ -183,6 +183,9 @@ public class CatanModel {
 		return users[3];
 	}
 	
+	public int getWhoseTurn() {
+		return whoseTurn;
+	}
 
 	/**
 	 *  this is the model of the MVC systemm
