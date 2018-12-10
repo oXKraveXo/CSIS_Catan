@@ -1,7 +1,14 @@
 package catan;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.*;
+import java.awt.image.*;
+import java.io.*;
+import javax.swing.*;
+import javax.imageio.ImageIO;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.event.*;
+import java.util.Random;
 
 import javax.swing.JFrame;
 
@@ -30,7 +37,7 @@ public class CatanController implements ActionListener{
 		this.view2 = view2;
 	}
 	
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e){
 		String command = e.getActionCommand();
 
 		if(command.equals("Build")) {
@@ -44,7 +51,6 @@ public class CatanController implements ActionListener{
 	        f.pack();
 	        f.setLocationRelativeTo(null);
 	        f.setVisible(true);
-	     
 	        //color selection
 		} else if(command.equals("p1color")) {
 			model.setUserOneColor(view.getColorOne());
@@ -69,9 +75,22 @@ public class CatanController implements ActionListener{
 			model.setNameFour(view.getNameFour());
 			//rolling dice and recieving resources
 		} else if(command.equals("rollDice")) {
-			int roll = 8; //model.rollDice();
-			view2.displayRoll(roll);
-			model.giveResources(roll);
+				int temp = model.rollDice();
+			view2.displayRoll(temp);
+			//model.giveResources(model.rollDice());
+			if (temp <=6 || temp >= 8) {
+				view2.setDisplay1(false);
+				//view2.setDisplay2(true);
+			}else {
+				view2.Robber();
+				view2.setDisplay1(true);
+				view2.setDisplay2(false);
+			}}else if(command.equals("Robber")) {
+			System.out.println("Pull acard from Player");
+			System.out.println("Discard cards");
+			view2.setDisplay1(false);
+			view2.setDisplay2(true);
+			//model.build(view2.getBuilding());
 			//building things
 		} else if(command.equals("build")) {
 			model.build(view2.getBuilding());
@@ -82,6 +101,10 @@ public class CatanController implements ActionListener{
 			int turnNum = model.getWhoseTurn();
 			view2.clearRoll();
 			view2.changeColor(turnNum);
+			view2.setDisplay1(true);
+			view2.setDisplay2(false);
+			view2.changeTurn();
+			view2.validate();
 			
 		} else if(command.equals("winCondition")) {
 			System.out.println("victory points needed to win: " + view.getWinAmount());

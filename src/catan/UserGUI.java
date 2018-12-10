@@ -11,8 +11,8 @@ import java.awt.event.*;
 import java.util.Random;
 
 public class UserGUI extends JFrame {
-	private static int WIDTH = 2200;
-	private static int HEIGHT = 550;
+	private static int WIDTH = 500;
+	private static int HEIGHT = 1000;
 	
 	// Class variables 
 	
@@ -29,6 +29,11 @@ public class UserGUI extends JFrame {
 	int condiction = user.getCondiction();
 	int [] resorces = user.getResorces(); 
 	
+	//
+	int width= 200;
+	int height = 20; 
+	int widthLocation = 20; 
+	int heightLocation = 460; 
 	// use to test the Cards in Deck 
 	int c = 0;
 	
@@ -65,6 +70,7 @@ public class UserGUI extends JFrame {
 	// Right Side of the GUI
 	private JButton ChangeCard;
 	private JLabel card_Num;
+	private JLabel help_Image;
 	private JLabel knight_Image;
 	private JLabel uw_Image;
 	private JLabel road_Image;
@@ -93,7 +99,7 @@ public class UserGUI extends JFrame {
 		Roll = new JLabel("");
 		Roll.setFont(new Font("Courier", Font.BOLD,75));
 		Task_2A = new JButton("Trade");
-		Task_2B = new JButton("Card");
+		Task_2B = new JButton("Play Card");
 		Task_2C = new JButton("Build");
 		Task_2_Notes = new JLabel("<html>In Phase two you can select three diffrent things you can do. <BR>1.  First you can trade. <BR>2.  Secound you can play a Deployment Card. <BR>3.  Third you can build <html>");
 		Task_3 = new JButton("End Turn");
@@ -111,59 +117,62 @@ public class UserGUI extends JFrame {
 		ChangeCard.addActionListener(processBHandler);
 		
 		
-		// Method for location and size of objects
-		nameLabel.setLocation(440,200);
-		nameLabel.setSize(200,20);
-		colorLabel.setLocation(440,220);
-		colorLabel.setSize(200,20);
-		orderNumLabel.setLocation(440,240);
-		orderNumLabel.setSize(200,20);
-		settlementsLabel.setLocation(440,260);
-		settlementsLabel.setSize(200,20);
-		citiesLabel.setLocation(440,280);
-		citiesLabel.setSize(200,20);
-		roadsLabel.setLocation(440,300);
-		roadsLabel.setSize(200,20);
-		condictionLabel.setLocation(440,320);
-		condictionLabel.setSize(400,20);
+		// Method for location and size of objects of display 1
+		nameLabel.setLocation(widthLocation,updateHeightLocation());
+		nameLabel.setSize(width,height);
+		colorLabel.setLocation(widthLocation,updateHeightLocation());
+		colorLabel.setSize(width,height);
+		orderNumLabel.setLocation(widthLocation,updateHeightLocation());
+		orderNumLabel.setSize(width,height);
+		settlementsLabel.setLocation(widthLocation,updateHeightLocation());
+		settlementsLabel.setSize(width,height);
+		citiesLabel.setLocation(widthLocation,updateHeightLocation());
+		citiesLabel.setSize(width,height);
+		roadsLabel.setLocation(widthLocation,updateHeightLocation());
+		roadsLabel.setSize(width,height);
+		condictionLabel.setLocation(widthLocation,updateHeightLocation());
+		condictionLabel.setSize(width,height);
 		//resorcesLabel.setLocation(440,340);
 		//resorcesLabel.setSize(400,20);
+		Task_1.setLocation(widthLocation,updateHeightLocation());
+		Task_1.setSize(100,20);
+		Task_1_Notes.setLocation(widthLocation,updateHeightLocation());
+		Task_1_Notes.setSize(400,40);
+		Task_1_Box.setLocation(widthLocation,updateHeightLocation()+20);
+		Task_1_Box.setSize(100,20);
+		Roll.setLocation(300,updateHeightLocation()-200);
+		Roll.setSize(100,100);
+		System.out.println(""+ heightLocation);
+		
+		// Method for location and size of objects of display 2
+		Task_2A.setLocation(20,620);
+		Task_2A.setSize(100,20);
+		Task_2B.setLocation(200,640);
+		Task_2B.setSize(100,20);
+		Task_2C.setLocation(380,620);
+		Task_2C.setSize(100,20);
+		Task_2_Notes.setLocation(20,680);
+		Task_2_Notes.setSize(400,60);
+		Task_2A_Box.setLocation(20,640);
+		Task_2A_Box.setSize(100,20);
+		Task_2B_Box.setLocation(200,660);
+		Task_2B_Box.setSize(100,20);
+		Task_2C_Box.setLocation(380,640);
+		Task_2C_Box.setSize(100,20);
+		Task_3.setLocation(20,800);
+		Task_3.setSize(100,20);
+		Task_3_Notes.setLocation(20,820);
+		Task_3_Notes.setSize(400,40);
+		
+		ChangeCard.setLocation(200,620);
+		ChangeCard.setSize(100,20);
+		card_Num.setLocation(20,0);
+		card_Num.setSize(110,20);
 		errorArea.setLocation(440,10);
 		errorArea.setSize(470,180);
-		Task_1.setLocation(1000,40);
-		Task_1.setSize(100,20);
-		Task_1_Notes.setLocation(1000,0);
-		Task_1_Notes.setSize(400,40);
-		Task_1_Box.setLocation(1000,60);
-		Task_1_Box.setSize(100,20);
-		Roll.setLocation(1150,80);
-		Roll.setSize(100,100);
-		Task_2A.setLocation(1000,260);
-		Task_2A.setSize(100,20);
-		Task_2B.setLocation(1200,260);
-		Task_2B.setSize(100,20);
-		Task_2C.setLocation(1400,260);
-		Task_2C.setSize(100,20);
-		Task_2_Notes.setLocation(1000,200);
-		Task_2_Notes.setSize(400,60);
-		Task_2A_Box.setLocation(1000,280);
-		Task_2A_Box.setSize(100,20);
-		Task_2B_Box.setLocation(1200,280);
-		Task_2B_Box.setSize(100,20);
-		Task_2C_Box.setLocation(1400,280);
-		Task_2C_Box.setSize(100,20);
-		Task_3.setLocation(1000,400);
-		Task_3.setSize(100,20);
-		Task_3_Notes.setLocation(1000,420);
-		Task_3_Notes.setSize(400,40);
-		ChangeCard.setLocation(1645,470);
-		ChangeCard.setSize(110,20);
-		card_Num.setLocation(1645,0);
-		card_Num.setSize(110,20);
-		
 		// Add Images to the GUI
 		BufferedImage Help_Image = ImageIO.read(new File("Capture.PNG"));
-		JLabel help_Image = new JLabel(new ImageIcon(Help_Image));
+		help_Image = new JLabel(new ImageIcon(Help_Image));
 		BufferedImage UW_Image = ImageIO.read(new File("UW.PNG"));
 		uw_Image = new JLabel(new ImageIcon(UW_Image));
 		BufferedImage Knight_Image = ImageIO.read(new File("Knight.PNG"));
@@ -177,13 +186,13 @@ public class UserGUI extends JFrame {
 		road_Image.setVisible(false);
 		
 		// Set the size and locations for my images
-		help_Image.setLocation(0,0);
+		help_Image.setLocation(30,0);
 		help_Image.setSize(400,500);
-		knight_Image.setLocation(1500,0);
+		knight_Image.setLocation(30,0);
 		knight_Image.setSize(400,500);
-		uw_Image.setLocation(1500,0);
+		uw_Image.setLocation(30,0);
 		uw_Image.setSize(400,500);
-		road_Image.setLocation(1500,0);
+		road_Image.setLocation(30,0);
 		road_Image.setSize(400,500);
 		
 		// Add images to my pane 
@@ -206,6 +215,7 @@ public class UserGUI extends JFrame {
 		pane.add(Task_1_Notes);
 		pane.add(Task_1_Box);
 		pane.add(Roll);
+		
 		pane.add(Task_2A);
 		pane.add(Task_2B);
 		pane.add(Task_2C);
@@ -219,8 +229,19 @@ public class UserGUI extends JFrame {
 		pane.add(card_Num);
 		
 		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		Task_2A.setVisible(false);
+		Task_2B.setVisible(false);
+		Task_2C.setVisible(false);
+		Task_2_Notes.setVisible(false);
+		Task_2A_Box.setVisible(false);
+		Task_2B_Box.setVisible(false);
+		Task_2C_Box.setVisible(false);
+		Task_3.setVisible(false);
+		Task_3_Notes.setVisible(false);
+		ChangeCard.setVisible(false);
+		card_Num.setVisible(false);
 		
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
 	
 	// Class to handle event listener for testing
@@ -253,17 +274,28 @@ public class UserGUI extends JFrame {
 		    }
 		    else if (e.getActionCommand().contains("Deck")) {
 		    	c++;
-		    	if (c ==1) {
+		    	if (c>=5)
+		    		c=0;
+		    	if (c ==0) {
+		    		help_Image.setVisible(true);
+			    	uw_Image.setVisible(false);
+					knight_Image.setVisible(false);
+					road_Image.setVisible(false);
+					card_Num.setText("This is the num of "+c);}
+		    	else if (c ==1) {
+		    		help_Image.setVisible(false);
 			    	uw_Image.setVisible(true);
 					knight_Image.setVisible(false);
 					road_Image.setVisible(false);
 					card_Num.setText("This is the num of "+c);}
 		    	else if (c==2) {
+		    		help_Image.setVisible(false);
 		    		uw_Image.setVisible(false);
 					knight_Image.setVisible(true);
 					road_Image.setVisible(false);
 					card_Num.setText("This is the num of "+c);}
 		    	else if (c==3) {
+		    		help_Image.setVisible(false);
 		    		uw_Image.setVisible(false);
 					knight_Image.setVisible(false);
 					road_Image.setVisible(true);
@@ -599,5 +631,41 @@ public class UserGUI extends JFrame {
 	public void setColor(String color) {
 		this.color = color;
 	}
-	
+	public int updateHeightLocation(){
+		heightLocation = heightLocation+ 20;
+	return heightLocation; 
+	}
+	public void setDisplay1(boolean temp) {
+		Task_1.setVisible(temp);
+		Task_1_Notes.setVisible(temp);
+		Task_1_Box.setVisible(temp);
+		//Roll.setVisible(false);	
+		setDisplay2(true);
+		pane.validate();
+	}
+	public void setDisplay2(boolean temp) {
+		Task_2A.setVisible(temp);
+		Task_2B.setVisible(temp);
+		Task_2C.setVisible(temp);
+		Task_2_Notes.setVisible(temp);
+		Task_2A_Box.setVisible(temp);
+		Task_2B_Box.setVisible(temp);
+		Task_2C_Box.setVisible(temp);
+		Task_3.setVisible(temp);
+		Task_3_Notes.setVisible(temp);
+		ChangeCard.setVisible(temp);
+		card_Num.setVisible(temp);
+		//Roll.setVisible(false);	
+		pane.validate();
+	}
+	public void Robber() {
+		Task_1.setText("7_Button");
+		Task_1.setActionCommand("Robber");
+		pane.validate();
+	}
+	public void changeTurn() {
+		Task_1.setText("Roll");
+		Task_1.setActionCommand("rollDice");
+		pane.validate();
+	}
 }

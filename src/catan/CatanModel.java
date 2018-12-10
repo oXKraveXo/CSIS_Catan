@@ -45,8 +45,15 @@ public class CatanModel {
 	}
 	
 	public int rollDice() {
-		int roll = (int )(Math.random() * 11 + 2);
-		return roll;
+		int redNum;
+		int yellowNum;
+		do {  
+			Random temp = new Random();
+			redNum = temp.nextInt(7);
+			yellowNum = temp.nextInt(7);
+			}	
+			while (redNum <= 0 || yellowNum <=0);
+		return redNum+yellowNum;
 	}
 	
 	public void giveResources(int roll) {
