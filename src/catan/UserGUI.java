@@ -356,7 +356,17 @@ public class UserGUI extends JFrame {
 
 	public void setColorLabel(String color) {
 		colorLabel.setText(color);
-	}
+		
+		if(color == "Blue") {
+			getContentPane().setBackground(Color.blue);
+		} else if(color == "Orange") {
+			getContentPane().setBackground(Color.orange);
+		} else if(color == "Red") {
+			getContentPane().setBackground(Color.red);
+		} else if(color == "White") {
+			getContentPane().setBackground(Color.white);
+		}
+	} 
 
 	public void setOrderLabel(int turnNum) {
 		orderNumLabel.setText("order number: " + turnNum);
@@ -378,17 +388,6 @@ public class UserGUI extends JFrame {
 		condictionLabel.setText("total victory points: " + vp);
 	}
 	
-	public void changeColor(int turn) {
-		if(turn == 0) {
-			getContentPane().setBackground(Color.blue);
-		} else if(turn == 1) {
-			getContentPane().setBackground(Color.orange);
-		} else if(turn == 2) {
-			getContentPane().setBackground(Color.white);
-		} else if(turn == 3) {
-			getContentPane().setBackground(Color.red);
-		}
-	}
 	
 	public void clearRoll() {
 		Roll.setText("");

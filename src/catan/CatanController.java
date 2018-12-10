@@ -101,7 +101,6 @@ public class CatanController implements ActionListener{
 			model.nextTurn();
 			int turnNum = model.getWhoseTurn();
 			view2.clearRoll();
-			view2.changeColor(turnNum);
 			view2.setDisplay1(true);
 			view2.setDisplay2(false);
 			view2.changeTurn();
