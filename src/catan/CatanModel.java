@@ -17,6 +17,7 @@ public class CatanModel {
 	private final int STONE = 5;
 	private int winAmount;
 	
+	
 	//this tracks whose turn it is, 0 is user1, 1 is user2 etc..
 	private int whoseTurn = 0;
 	// Constructor for this class
@@ -30,7 +31,7 @@ public class CatanModel {
 			resources[i] = 0;
 		for (int i=0; i<users.length; i++) {
 			//public User (String name, String color, int orderNum, int settlements, int cities, int roads, Cards [] usersCards, int condiction, int [] resorces ) {
-			users[i] = new User(" ", " ", i, 5, 4, 15, usersCards, 0, resources );
+			users[i] = new User(" ", " ", i, 0, 0, 0, usersCards, 0, resources );
 		}
 	}
 	
@@ -59,32 +60,37 @@ public class CatanModel {
 	public void giveResources(int roll) {
 		if(roll == 6) {
 			//test case for building a settlement
-			users[0].addResources(WOOD);
-			users[0].addResources(SHEEP);
-			users[0].addResources(WHEAT);
-			users[0].addResources(BRICK);
+			users[whoseTurn].addResources(WOOD);
+			users[whoseTurn].addResources(SHEEP);
+			users[whoseTurn].addResources(WHEAT);
+			users[whoseTurn].addResources(BRICK);
+			System.out.println("you hit the roll to build a settlement (this is for testing only)");
+			
 		} else if(roll == 8) {
 			//test case for building a city
-			users[0].addResources(WHEAT);
-			users[0].addResources(WHEAT);
-			users[0].addResources(WHEAT);
-			users[0].addResources(STONE);
-			users[0].addResources(STONE);
+			users[whoseTurn].addResources(WHEAT);
+			users[whoseTurn].addResources(WHEAT);
+			users[whoseTurn].addResources(WHEAT);
+			users[whoseTurn].addResources(STONE);
+			users[whoseTurn].addResources(STONE);
+			System.out.println("you hit the roll to build a city (this is for testing only)");
 		} else if(roll == 9) {
 			//test case for building a road
-			users[0].addResources(WOOD);
-			users[0].addResources(BRICK);
+			users[whoseTurn].addResources(WOOD);
+			users[whoseTurn].addResources(BRICK);
 		} else if(roll == 10) {
 			//test case for dev card
-			users[0].addResources(WHEAT);
-			users[0].addResources(STONE);
-			users[0].addResources(SHEEP);
+			users[whoseTurn].addResources(WHEAT);
+			users[whoseTurn].addResources(STONE);
+			users[whoseTurn].addResources(SHEEP);
+			System.out.println("you hit the roll to buy a card (this is for testing only)");
 		}
 	}
 	
 	public void build(String item) {
 		if(item.equals("Settlement")) {
 			if(users[whoseTurn].hasResource(WOOD, 1) && users[whoseTurn].hasResource(SHEEP,1) && users[whoseTurn].hasResource(WHEAT,1) && users[whoseTurn].hasResource(BRICK,1)) {
+				users[whoseTurn].addSettlements();
 				System.out.println("what location do you want to place the settlement?");
 				int location = sc.nextInt();
 				System.out.println("Placing settlement on location " + location);
@@ -94,6 +100,7 @@ public class CatanModel {
 			}
 		} else if(item.equals("City")) {
 			if(users[whoseTurn].hasResource(STONE, 2) && users[whoseTurn].hasResource(WHEAT, 3)) {
+				users[whoseTurn].addCities();;
 				System.out.println("what location do you want to place the city");
 				int location = sc.nextInt();
 				System.out.println("Placing city on location " + location);
@@ -102,6 +109,7 @@ public class CatanModel {
 			}
 		} else if(item.equals("Road")) {
 			if(users[whoseTurn].hasResource(WOOD, 1) && users[whoseTurn].hasResource(BRICK, 1)) {
+				users[whoseTurn].addRoads();
 				System.out.println("what location do you want to place the road");
 				int location = sc.nextInt();
 				System.out.println("Placing road on location " + location);
@@ -111,6 +119,7 @@ public class CatanModel {
 			if(users[whoseTurn].hasResource(WHEAT, 1) && users[whoseTurn].hasResource(SHEEP, 1) && users[whoseTurn].hasResource(STONE, 1)) {
 				System.out.println("drawing card");
 				int cardNum = deck.drawCard();
+				users[whoseTurn].addCards();
 				if (cardNum <= 13)
 					System.out.println("you drew a knight");
 				if (cardNum >= 14 && cardNum < 17)
@@ -162,15 +171,15 @@ public class CatanModel {
 		System.out.println("user 1 renamed to " + name);
 	}
 	public void setNameTwo(String name) {
-		users[0].setName(name);
+		users[1].setName(name);
 		System.out.println("user 2 renamed to " + name);
 	}
 	public void setNameThree(String name) {
-		users[0].setName(name);
+		users[2].setName(name);
 		System.out.println("user 3 renamed to " + name);
 	}
 	public void setNameFour(String name) {
-		users[0].setName(name);
+		users[3].setName(name);
 		System.out.println("user 4 renamed to " + name);
 	}
 	
@@ -192,6 +201,30 @@ public class CatanModel {
 	
 	public int getWhoseTurn() {
 		return whoseTurn;
+	}
+	
+	public String getCurrentName() {
+		return users[whoseTurn].getName();
+	}
+	
+	public String getCurrentColor() {
+		return users[whoseTurn].getColor();
+	}
+	
+	public int getCurrentSettlements() {
+		return users[whoseTurn].getSettlements();
+	}
+	
+	public int getCurrentCities() {
+		return users[whoseTurn].getCities();
+	}
+	
+	public int getCurrentVP() {
+		return users[whoseTurn].getCondiction();
+	}
+	
+	public int getCurrentRoads() {
+		return users[whoseTurn].getRoads();
 	}
 
 	/**

@@ -79,6 +79,7 @@ public class CatanController implements ActionListener{
 			view2.displayRoll(temp);
 			//model.giveResources(model.rollDice());
 			if (temp <=6 || temp >= 8) {
+				model.giveResources(temp);
 				view2.setDisplay1(false);
 				//view2.setDisplay2(true);
 			}else {
@@ -104,6 +105,13 @@ public class CatanController implements ActionListener{
 			view2.setDisplay1(true);
 			view2.setDisplay2(false);
 			view2.changeTurn();
+			view2.setNameLabel(model.getCurrentName());
+			view2.setColorLabel(model.getCurrentColor());
+			view2.setOrderLabel(turnNum + 1);
+			view2.setSettlementsLabel(model.getCurrentSettlements());
+			view2.setCitiesLabel(model.getCurrentCities());
+			view2.setVPLabel(model.getCurrentVP());
+			view2.setRoadsLabel(model.getCurrentRoads());
 			view2.validate();
 			
 		} else if(command.equals("winCondition")) {
