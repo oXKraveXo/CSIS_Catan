@@ -13,14 +13,14 @@ import java.util.Random;
 import javax.swing.JFrame;
 
 
-public class CatanController implements ActionListener{
+public class CatanController implements ActionListener, Catch{
 	
 	private CatanController controller;
 	
 	//to connect the M, V, and C together
 	private CatanModel model;
-	private StartGUI view;
-	private UserGUI view2;
+	private CatanView view;
+
 	
 	/**
 	 * This saves the model and and view.
@@ -30,97 +30,154 @@ public class CatanController implements ActionListener{
 	 * 
 	 * view is a View for what should be displayed in the GUI
 	 */
-	public CatanController(CatanModel model, StartGUI view, UserGUI view2) {
+	public CatanController(CatanModel model, CatanView view) {
 		
 		this.model = model;
 		this.view = view;
-		this.view2 = view2;
 	}
 	
 	public void actionPerformed(ActionEvent e){
 		String command = e.getActionCommand();
-
+		
 		if(command.equals("Build")) {
-			//builds the board
-			System.out.println("building board");
-			CatanView view = new CatanView();
-			view.registerListener(controller);
-			JFrame f = new JFrame();
-	        f.setContentPane(view);
-	        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        f.pack();
-	        f.setLocationRelativeTo(null);
-	        f.setVisible(true);
-	        //color selection
-		} else if(command.equals("p1color")) {
-			model.setUserOneColor(view.getColorOne());
-			System.out.println(view.getNameOne() + "s color is now " + view.getColorOne());
+				int counter = 0;
+				for(int i =0; i<view.getStartGUI().getPlayers().length; i++) {
+					view.getStartGUI().getOptions()[counter] = view.getStartGUI().getPlayers()[i].getText();	
+					counter++;}
+				for(int i =0; i<view.getStartGUI().getPlayers().length; i++) {
+					view.getStartGUI().getOptions()[counter] = view.getStartGUI().getNewColor()[i].getSelectedItem().toString();
+					counter++;}
+				for (int i=0; i<view.getStartGUI().getBooleanStatements().length; i++) {
+					view.getStartGUI().getOptions()[counter] = view.getStartGUI().getBooleanStatements()[i].getSelectedItem().toString();
+					counter++;
+				}
+				view.getStartGUI().getOptions()[counter] = view.getStartGUI().getCondictionField().getText();
+				model = new CatanModel(view.getStartGUI().getOptions());
+				//if (LogicTest(view.getStartGUI().getOptions())) {
+					for (int i =0; i<4; i++)
+					System.out.println(model.users[i]);
+					
+					view.getStartGUI().hide();
+					view.getUserInGUI().show();
+					//}	
+		}
+
+//		if(command.equals("Build")) {	
+//			if (LogicTest(view.getOptions())) {
+//			if (model.users[0].getName().equals("a")) {
+//			model = new CatanModel(view.getOptions());
+//			view.hide();
+//			view.getUserInGUI().show();
+//			}
+			//}
+//			System.out.println("building board");
+//			CatanView view = new CatanView();
+//			view.registerListener(controller);
+//			JFrame f = new JFrame();
+//	        f.setContentPane(view);
+//	        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//	        f.pack();
+//	        f.setLocationRelativeTo(null);
+//	        f.setVisible(true);
+			 //userInGUI.show();
+			
+		else if(command.equals("p1color")) {
+			model.setUserOneColor(view.getStartGUI().getColorOne());
+			System.out.println(view.getStartGUI().getNameOne() + "s color is now " + view.getStartGUI().getColorOne());
 		} else if(command.equals("p2color")) {
-			model.setUserTwoColor(view.getColorTwo());
-			System.out.println(view.getNameTwo() + "s color is now " + view.getColorTwo());
+			model.setUserTwoColor(view.getStartGUI().getColorTwo());
+			System.out.println(view.getStartGUI().getNameTwo() + "s color is now " + view.getStartGUI().getColorTwo());
 		} else if(command.equals("p3color")) {
-			model.setUserThreeColor(view.getColorThree());
-			System.out.println(view.getNameThree() + "s color is now " + view.getColorThree());
+			model.setUserThreeColor(view.getStartGUI().getColorThree());
+			System.out.println(view.getStartGUI().getNameThree() + "s color is now " + view.getStartGUI().getColorThree());
 		} else if(command.equals("p4color")) {
-			model.setUserFourColor(view.getColorFour());
-			System.out.println(view.getNameFour() + "s color is now " + view.getColorFour());
+			model.setUserFourColor(view.getStartGUI().getColorFour());
+			System.out.println(view.getStartGUI().getNameFour() + "s color is now " + view.getStartGUI().getColorFour());
 			//name selection
 		} else if(command.equals("p1name")) {
-			model.setNameOne(view.getNameOne());
+			model.setNameOne(view.getStartGUI().getNameOne());
 		} else if(command.equals("p2name")) {
-			model.setNameTwo(view.getNameTwo());
+			model.setNameTwo(view.getStartGUI().getNameTwo());
 		} else if(command.equals("p3name")) {
-			model.setNameThree(view.getNameThree());
+			model.setNameThree(view.getStartGUI().getNameThree());
 		} else if(command.equals("p4name")) {
-			model.setNameFour(view.getNameFour());
+			model.setNameFour(view.getStartGUI().getNameFour());
 			//rolling dice and recieving resources
 		} else if(command.equals("rollDice")) {
 				int temp = model.rollDice();
-			view2.displayRoll(temp);
+				
+			view.getUserInGUI().displayRoll(temp);
 			//model.giveResources(model.rollDice());
 			if (temp <=6 || temp >= 8) {
-				model.giveResources(temp);
-				view2.setDisplay1(false);
-				//view2.setDisplay2(true);
+				view.getUserInGUI().setDisplay1(false);
+				//view.getUserInGUI().setDisplay2(true);
 			}else {
-				view2.Robber();
-				view2.setDisplay1(true);
-				view2.setDisplay2(false);
+				view.getUserInGUI().Robber();
+				view.getUserInGUI().setDisplay1(true);
+				view.getUserInGUI().setDisplay2(false);
 			}}else if(command.equals("Robber")) {
 			System.out.println("Pull acard from Player");
 			System.out.println("Discard cards");
-			view2.setDisplay1(false);
-			view2.setDisplay2(true);
-			//model.build(view2.getBuilding());
+			view.getUserInGUI().setDisplay1(false);
+			view.getUserInGUI().setDisplay2(true);
+			//model.build(view.getUserInGUI().getBuilding());
 			//building things
 		} else if(command.equals("build")) {
-			model.build(view2.getBuilding());
+			model.build(view.getUserInGUI().getBuilding());
 			//moving to next turn
 		} else if(command.equals("end")) {
 			model.checkForWin();
 			model.nextTurn();
 			int turnNum = model.getWhoseTurn();
-			view2.clearRoll();
-			view2.setDisplay1(true);
-			view2.setDisplay2(false);
-			view2.changeTurn();
-			view2.setNameLabel(model.getCurrentName());
-			view2.setColorLabel(model.getCurrentColor());
-			view2.setOrderLabel(turnNum + 1);
-			view2.setSettlementsLabel(model.getCurrentSettlements());
-			view2.setCitiesLabel(model.getCurrentCities());
-			view2.setVPLabel(model.getCurrentVP());
-			view2.setRoadsLabel(model.getCurrentRoads());
-			view2.validate();
+			view.getUserInGUI().clearRoll();
+			view.getUserInGUI().changeColor(turnNum);
+			view.getUserInGUI().setDisplay1(true);
+			view.getUserInGUI().setDisplay2(false);
+			view.getUserInGUI().changeTurn();
+			view.getUserInGUI().validate();
 			
 		} else if(command.equals("winCondition")) {
-			System.out.println("victory points needed to win: " + view.getWinAmount());
-			model.setWinCon(view.getWinAmount());
+			System.out.println("victory points needed to win: " + view.getStartGUI().getWinAmount());
+			model.setWinCon(view.getStartGUI().getWinAmount());
 		}
 		
 			
 	}
-
-	
-
+	// Interface methods
+	public String logicOption(String input) {
+		String temp = ""; 
+		return temp;
+	}
+	public String StringOption(String input){
+		String temp = ""; 
+		return temp;
+	}
+	public String NumberOption(String input){
+		String temp = ""; 
+		return temp;
+	}
+	public String GeneralCatch(String input){
+		String temp = "";
+		return temp;
+	}
+	public String OutOfOrder(String input){
+		String temp = ""; 
+		return temp;
+	}
+//	if (model.getUsers()[0].getColor()=="Blue") {
+//		temp = false;
+//	public boolean LogicTest(String input []) {
+//		boolean temp = true; 
+//		for (int i=0; i<4; i++) {
+//		//if (model.getUsers()[0].getName()=="Orange") {
+//		if (model.getUsers()[0].getName().toString()=="a") {
+//			temp = false;
+//			// why are we getting a 
+//			System.out.print(model.getUsers()[0].getColor());
+//			System.out.print(model.getUsers()[0].getName());
+//		}
+//		}
+//		return temp;
+//
+//		}
 }//end class

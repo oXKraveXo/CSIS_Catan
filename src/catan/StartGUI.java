@@ -14,6 +14,7 @@ public class StartGUI extends JFrame{
 	private static int HEIGHT = 550;
 	
 	// Class variables 
+	String Options[] = new String [11];
 	private int NumPlayers;
 	private String Condiction;
 	private String [] PlayersNames = new String[4];
@@ -36,6 +37,8 @@ public class StartGUI extends JFrame{
 	private JButton build;
 	
 	public StartGUI(){// the constructor for the GUI
+		//Implementation action listener 
+				
 		setTitle("Hello Welcome to Catan");
 		setSize(WIDTH, HEIGHT);
 		
@@ -61,7 +64,8 @@ public class StartGUI extends JFrame{
 		condictionLabel = new JLabel("Win Condiction");
 		condictionField = new JTextField();
 		build = new JButton("Build");
-		 
+//		processButtonHandler processBHandler = new processButtonHandler();
+//		build.addActionListener(processBHandler);
 	
 	
 		
@@ -166,7 +170,6 @@ public class StartGUI extends JFrame{
 		int jml = Integer.parseInt(condictionField.getText());
 		return jml;
 	}
-	
 	public String getColorOne() {
 		return NewColor[0].getSelectedItem().toString();
 	}
@@ -191,6 +194,215 @@ public class StartGUI extends JFrame{
 	public String getNameFour() {
 		return Players[3].getText();
 	}
+	// Class to handle event listener for testing
+//	private class processButtonHandler implements ActionListener{//class to handle the Button
+//		@Override
+//		public void actionPerformed(ActionEvent arg0) {// the method of the button controls
+//			if (arg0.getActionCommand().contains("Build")) {
+//				int counter = 0;
+//
+//				for(int i =0; i<Players.length; i++) {
+//					Options[counter] = Players[i].getText();	
+//					counter++;}
+//				for(int i =0; i<Players.length; i++) {
+//					Options[counter] = NewColor[i].getSelectedItem().toString();
+//					counter++;}
+//				for (int i=0; i<BooleanStatements.length; i++) {
+//					Options[counter] = booleanStatements[i].getSelectedItem().toString();
+//					counter++;
+//				}
+//				Options[counter] = condictionField.getText();
+//				}
+//	}
+	public String [] getValues() {
+		String temp[] = new String [0];
+		
+		
+		return temp;
+	}
+	
+	
+	
+	
+	public static int getWIDTH() {
+		return WIDTH;
+	}
 
+	public static void setWIDTH(int wIDTH) {
+		WIDTH = wIDTH;
+	}
 
+	public static int getHEIGHT() {
+		return HEIGHT;
+	}
+
+	public static void setHEIGHT(int hEIGHT) {
+		HEIGHT = hEIGHT;
+	}
+
+	public int getNumPlayers() {
+		return NumPlayers;
+	}
+
+	public void setNumPlayers(int numPlayers) {
+		NumPlayers = numPlayers;
+	}
+
+	public String getCondiction() {
+		return Condiction;
+	}
+
+	public void setCondiction(String condiction) {
+		Condiction = condiction;
+	}
+
+	public String[] getPlayersNames() {
+		return PlayersNames;
+	}
+
+	public void setPlayersNames(String[] playersNames) {
+		PlayersNames = playersNames;
+	}
+
+	public String[] getPlayersColors() {
+		return PlayersColors;
+	}
+
+	public void setPlayersColors(String[] playersColors) {
+		PlayersColors = playersColors;
+	}
+
+	public int[] getOrder() {
+		return Order;
+	}
+
+	public void setOrder(int[] order) {
+		Order = order;
+	}
+
+	public JTextField[] getPlayers() {
+		return Players;
+	}
+
+	public void setPlayers(JTextField[] players) {
+		Players = players;
+	}
+
+	public String[] getColors() {
+		return Colors;
+	}
+
+	public void setColors(String[] colors) {
+		Colors = colors;
+	}
+
+	public JComboBox[] getNewColor() {
+		return NewColor;
+	}
+
+	public void setNewColor(JComboBox[] newColor) {
+		NewColor = newColor;
+	}
+
+	public JLabel[] getPlayersLabel() {
+		return PlayersLabel;
+	}
+
+	public void setPlayersLabel(JLabel[] playersLabel) {
+		PlayersLabel = playersLabel;
+	}
+
+	public JLabel[] getColorLabel() {
+		return ColorLabel;
+	}
+
+	public void setColorLabel(JLabel[] colorLabel) {
+		ColorLabel = colorLabel;
+	}
+
+//	public String[] getBooleanStatements() {
+//		return BooleanStatements;
+//	}
+
+	public void setBooleanStatements(String[] booleanStatements) {
+		BooleanStatements = booleanStatements;
+	}
+
+	public JComboBox[] getBooleanStatements() {
+		return booleanStatements;
+	}
+
+	public void setBooleanStatements(JComboBox[] booleanStatements) {
+		this.booleanStatements = booleanStatements;
+	}
+
+	public JLabel[] getBooleanLabel() {
+		return BooleanLabel;
+	}
+
+	public void setBooleanLabel(JLabel[] booleanLabel) {
+		BooleanLabel = booleanLabel;
+	}
+
+	public JTextArea getErrorArea() {
+		return errorArea;
+	}
+
+	public void setErrorArea(JTextArea errorArea) {
+		this.errorArea = errorArea;
+	}
+
+	public JLabel getCondictionLabel() {
+		return condictionLabel;
+	}
+
+	public void setCondictionLabel(JLabel condictionLabel) {
+		this.condictionLabel = condictionLabel;
+	}
+
+	public JTextField getCondictionField() {
+		return condictionField;
+	}
+
+	public void setCondictionField(JTextField condictionField) {
+		this.condictionField = condictionField;
+	}
+
+	public JButton getBuild() {
+		return build;
+	}
+
+	public void setBuild(JButton build) {
+		this.build = build;
+	}
+
+	// Interface methods
+	public String logicOption(String input) {
+		String temp = ""; 
+		return temp;
+	}
+	public String StringOption(String input){
+		String temp = ""; 
+		return temp;
+	}
+	public String NumberOption(String input){
+		String temp = ""; 
+		return temp;
+	}
+	public String GeneralCatch(String input){
+		String temp = "";
+		return temp;
+	}
+	public String OutOfOrder(String input){
+		String temp = ""; 
+		return temp;
+	}
+	public String[] getOptions() {
+		return Options;
+	}
+
+	public void setOptions(String[] options) {
+		Options = options;
+	}
+	
 }

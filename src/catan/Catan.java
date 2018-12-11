@@ -47,17 +47,17 @@ public class Catan {
 		
 		//creating the model, view, and controller components of the system
 		
-		//CatanView view = new CatanView();
-		StartGUI view2 = new StartGUI();
-		UserGUI view3 = new UserGUI();
+		CatanView view = new CatanView();
+//		StartGUI view2 = new StartGUI();
+//		UserGUI view3 = new UserGUI();
 		//UserGUI view3 = new UserGUI();
 		CatanModel model = new CatanModel();
-		CatanController controller = new CatanController(model, view2, view3);
+		CatanController controller = new CatanController(model, view);
 		
 		//make the controller listen to the view for inputs
 		//view.registerListener(controller);
-		view2.registerListener(controller);
-		view3.registerListener(controller);
+		view.getStartGUI().registerListener(controller);
+		view.getUserInGUI().registerListener(controller);
 		
 		
 		/*

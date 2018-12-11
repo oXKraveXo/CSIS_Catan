@@ -11,7 +11,6 @@ public class User {
 	int settlements;
 	int cities;
 	int roads;
-	int cards;
 	Cards [] usersCards; 
 	int condiction;
 	int [] resorces; 
@@ -21,7 +20,7 @@ public class User {
 	public User () {
 		
 	}
-	public User (String name, String color, int orderNum, int settlements, int cities, int roads, Cards [] usersCards, int condiction, int [] resorces) {
+	public User (String name, String color, int orderNum, int settlements, int cities, int roads, Cards [] usersCards, int condiction, int [] resorces ) {
 		this.name = name;
 		this.color = color;
 		this.orderNum = orderNum;
@@ -104,27 +103,7 @@ public class User {
 	}
 	
 	public void removeResources(int type, int amount) {
-
-	}
-
-	public void addSettlements() {
-		settlements++;
-	}
-
-	public void addCities() {
-		cities++;
-	}
-
-	public void addRoads() {
-		roads++;
-	}
-	
-	public void addCards() {
-		cards++;
-	}
-	
-	public int getCards() {
-		return cards;
+		
 	}
 	
 	@Override
@@ -133,6 +112,5 @@ public class User {
 				+ ", cities=" + cities + ", roads=" + roads + ", usersCards=" + Arrays.toString(usersCards)
 				+ ", condiction=" + condiction + ", resorces=" + Arrays.toString(resorces) + "]";
 	}
-	
 
 }

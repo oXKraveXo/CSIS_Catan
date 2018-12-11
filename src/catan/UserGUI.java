@@ -349,45 +349,18 @@ public class UserGUI extends JFrame {
 		String value= Task_2C_Box.getSelectedItem().toString();
 		return value;
 	}
-
-	public void setNameLabel(String name) {
-		nameLabel.setText(name);
-	}
-
-	public void setColorLabel(String color) {
-		colorLabel.setText(color);
-		
-		if(color == "Blue") {
+	
+	public void changeColor(int turn) {
+		if(turn == 0) {
 			getContentPane().setBackground(Color.blue);
-		} else if(color == "Orange") {
+		} else if(turn == 1) {
 			getContentPane().setBackground(Color.orange);
-		} else if(color == "Red") {
-			getContentPane().setBackground(Color.red);
-		} else if(color == "White") {
+		} else if(turn == 2) {
 			getContentPane().setBackground(Color.white);
+		} else if(turn == 3) {
+			getContentPane().setBackground(Color.red);
 		}
-	} 
-
-	public void setOrderLabel(int turnNum) {
-		orderNumLabel.setText("order number: " + turnNum);
 	}
-
-	public void setSettlementsLabel(int settlements) {
-		settlementsLabel.setText("total settlements placed: " + settlements);
-	}
-
-	public void setCitiesLabel(int cities) {
-		citiesLabel.setText("total cities placed: " + settlements);
-	}
-
-	public void setRoadsLabel(int roads) {
-		roadsLabel.setText("total roads placed: " + roads);
-	}
-	
-	public void setVPLabel(int vp) {
-		condictionLabel.setText("total victory points: " + vp);
-	}
-	
 	
 	public void clearRoll() {
 		Roll.setText("");
@@ -686,7 +659,7 @@ public class UserGUI extends JFrame {
 		pane.validate();
 	}
 	public void Robber() {
-		Task_1.setText("ROBBER");
+		Task_1.setText("7_Button");
 		Task_1.setActionCommand("Robber");
 		pane.validate();
 	}

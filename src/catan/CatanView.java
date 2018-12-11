@@ -1,6 +1,8 @@
 package catan;
 
 import java.awt.*;
+import java.io.IOException;
+
 import javax.swing.*;
 
 public class CatanView extends JPanel{
@@ -9,13 +11,17 @@ public class CatanView extends JPanel{
 	  private static final long serialVersionUID = 1L;
 	    private final int WIDTH = 1200;
 	    private final int HEIGHT = 800;
-
+	    StartGUI startGUI;
+	    UserGUI userInGUI;
 	    private Font font = new Font("Arial", Font.BOLD, 18);
 	    FontMetrics metrics;
 
-	   public CatanView() {
+	   public CatanView()  throws IOException{
 	        setPreferredSize(new Dimension(WIDTH, HEIGHT));
-	        StartGUI startView = new StartGUI();
+	        startGUI = new StartGUI();
+	        userInGUI = new UserGUI();
+	       // userInGUI.pane.setVisible(false);
+	        userInGUI.hide();
 	    }
 
 	    @Override
@@ -133,6 +139,22 @@ public class CatanView extends JPanel{
 	public void setVisible(boolean b) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public StartGUI getStartGUI() {
+		return startGUI;
+	}
+
+	public void setStartGUI(StartGUI startGUI) {
+		this.startGUI = startGUI;
+	}
+
+	public UserGUI getUserInGUI() {
+		return userInGUI;
+	}
+
+	public void setUserInGUI(UserGUI userInGUI) {
+		this.userInGUI = userInGUI;
 	}
 
 }
