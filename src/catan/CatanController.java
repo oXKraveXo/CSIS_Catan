@@ -18,9 +18,9 @@ public class CatanController implements ActionListener, Catch{
 	private CatanController controller;
 	
 	//to connect the M, V, and C together
-	private CatanModel model;
+	private CatanModel model;	
 	private CatanView view;
-
+	
 	
 	/**
 	 * This saves the model and and view.

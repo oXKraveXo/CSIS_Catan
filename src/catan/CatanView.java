@@ -14,6 +14,7 @@ public class CatanView extends JPanel{
 	    StartGUI startGUI;
 	    UserGUI userInGUI;
 	    private Font font = new Font("Arial", Font.BOLD, 18);
+	    private HexData[][] ;
 	    FontMetrics metrics;
 
 	   public CatanView()  throws IOException{
@@ -21,7 +22,7 @@ public class CatanView extends JPanel{
 	        startGUI = new StartGUI();
 	        userInGUI = new UserGUI();
 	       // userInGUI.pane.setVisible(false);
-	        userInGUI.hide();
+	        userInGUI.hide();//what is this supposed to do?
 	    }
 
 	    @Override
@@ -61,15 +62,15 @@ public class CatanView extends JPanel{
 	        Graphics2D g2d = (Graphics2D) g;
 
 	        Hexagon hex = new Hexagon(x, y, r);
-	        String text = String.format("%s : %s", coord(posX), coord(posY));
-	        int w = metrics.stringWidth(text);
-	        int h = metrics.getHeight();
+	        //String text = String.format("%s : %s", coord(posX), coord(posY));
+	        //int w = metrics.stringWidth(text);
+	        //int h = metrics.getHeight();
 
 	        hex.draw(g2d, x, y, 0, 0x008844, true);
 	        hex.draw(g2d, x, y, 4, 0xFFDD88, false);
 
 	        g.setColor(new Color(0xFFFFFF));
-	        g.drawString(text, x - w/2, y + h/2);
+	        //g.drawString(text, x - w/2, y + h/2);
 	    }
 
 	    private String coord(int value) {

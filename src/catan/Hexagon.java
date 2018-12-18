@@ -11,9 +11,15 @@ public class Hexagon extends Polygon {
     private Point center = new Point(0, 0);
     private int radius;
     private int rotation = 0;
+    private boolean robber = false;//import data from other data object
+    private int resource;//import from elsewhere
+    private int chit;//import
 
-    public Hexagon(Point center, int radius) {
-        npoints = SIDES;
+    public Hexagon(Point center, int radius, HexData data) {
+    	robber = data.getRobber();
+    	resource = data.getResource();
+    	chit = data.getChit();
+    	npoints = SIDES;
         xpoints = new int[SIDES];
         ypoints = new int[SIDES];
 
@@ -23,8 +29,8 @@ public class Hexagon extends Polygon {
         updatePoints();
     }
 
-    public Hexagon(int x, int y, int radius) {
-        this(new Point(x, y), radius);
+    public Hexagon(int x, int y, int radius, HexData data) {
+        this(new Point(x, y), radius, data);
     }
 
     public int getRadius() {
@@ -90,6 +96,37 @@ public class Hexagon extends Polygon {
             g.fillPolygon(xpoints, ypoints, npoints);
         else
             g.drawPolygon(xpoints, ypoints, npoints);
+
+        // Set values to previous when done.
+        g.setColor(tmpC);
+        g.setStroke(tmpS);
+    }
+    public void drawHex(Graphics2D g, int x, int y, int lineThickness) {
+        // Store before changing.
+        Stroke tmpS = g.getStroke();
+        Color tmpC = g.getColor();
+
+        switch (resource) {
+        case 0: g.setColor(new Color(255, 250, 205));//desert
+        		break;
+        case 1: g.setColor(new Color(34, 139, 34));//wood
+        		break;
+        case 2: g.setColor(new Color(149, 149, 149));//ore
+        		break;
+        case 3: g.setColor(new Color(191, 255, 0));//sheep
+        		break;
+        case 4: g.setColor(new Color(255, 255, 15));//wheat
+        		break;
+        case 5: g.setColor(new Color(148, 76, 42));//brick
+        		break;
+        }
+        
+        
+        
+        
+        
+        g.setStroke(new BasicStroke(lineThickness, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER));
+        g.drawPolygon(xpoints, ypoints, npoints);
 
         // Set values to previous when done.
         g.setColor(tmpC);
